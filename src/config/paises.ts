@@ -81,12 +81,12 @@ export const PAISES: Pais[] = [
     redes: {
       instagram: {
         url: "https://www.instagram.com/tareappchile/",
-        seguidores: null,
+        seguidores: 4303,
         fecha: "2026-06-16",
       },
       facebook: {
         url: "https://www.facebook.com/profile.php?id=61558060587570",
-        seguidores: null,
+        seguidores: 1830,
         fecha: "2026-06-16",
       },
       tiktok: {
@@ -107,12 +107,12 @@ export const PAISES: Pais[] = [
     redes: {
       instagram: {
         url: "https://www.instagram.com/trabajos_helper/",
-        seguidores: null,
+        seguidores: 1553,
         fecha: "2026-06-16",
       },
       facebook: {
         url: "https://www.facebook.com/profile.php?id=61565498995023",
-        seguidores: null,
+        seguidores: 1384,
         fecha: "2026-06-16",
       },
       tiktok: {

@@ -1,4 +1,5 @@
 import { cn } from "@/lib/utils";
+import { Reveal } from "@/components/reveal";
 
 interface Props {
   eyebrow?: string;
@@ -16,7 +17,7 @@ export function SectionHeader({
   align = "center",
 }: Props) {
   return (
-    <div
+    <Reveal
       className={cn(
         "max-w-2xl",
         align === "center" ? "mx-auto text-center" : "text-left",
@@ -24,11 +25,12 @@ export function SectionHeader({
       )}
     >
       {eyebrow ? (
-        <p className="mb-3 text-xs font-semibold uppercase tracking-[0.22em] text-brand-300">
+        <p className="mb-3 inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.24em] text-brand-300">
+          <span aria-hidden="true" className="h-px w-6 bg-brand-400/60" />
           {eyebrow}
         </p>
       ) : null}
-      <h2 className="text-3xl font-semibold tracking-tight text-white sm:text-4xl">
+      <h2 className="font-display text-3xl font-medium tracking-tight text-white sm:text-[2.6rem] sm:leading-[1.1]">
         {titulo}
       </h2>
       {descripcion ? (
@@ -36,6 +38,6 @@ export function SectionHeader({
           {descripcion}
         </p>
       ) : null}
-    </div>
+    </Reveal>
   );
 }

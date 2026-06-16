@@ -11,27 +11,36 @@
   body {
     @apply bg-ink text-slate-200 antialiased;
     background-image: radial-gradient(
-      70% 50% at 50% -10%,
-      rgba(56, 189, 248, 0.1) 0%,
-      rgba(6, 10, 19, 0) 60%
-    );
+        60% 40% at 50% -8%,
+        rgba(220, 167, 61, 0.12) 0%,
+        rgba(10, 20, 36, 0) 60%
+      ),
+      radial-gradient(
+        40% 30% at 100% 10%,
+        rgba(21, 41, 74, 0.6) 0%,
+        rgba(10, 20, 36, 0) 70%
+      );
     background-repeat: no-repeat;
   }
 
   ::selection {
-    background: rgba(56, 189, 248, 0.3);
+    background: rgba(220, 167, 61, 0.32);
     color: #fff;
   }
 
-  /* Foco visible accesible (teclado). */
   :where(a, button, [tabindex]):focus-visible {
-    outline: 2px solid #38bdf8;
+    outline: 2px solid #e8c16a;
     outline-offset: 3px;
     border-radius: 4px;
   }
 
   h1, h2, h3 {
     text-wrap: balance;
+  }
+
+  /* Scrollbar a tono. */
+  * {
+    scrollbar-color: rgba(220, 167, 61, 0.35) transparent;
   }
 }
 
@@ -44,9 +53,29 @@
     @apply mx-auto w-full max-w-[1200px] px-6;
   }
 
-  /* Texto con leve degradado para titulares institucionales. */
-  .text-gradient {
-    background: linear-gradient(180deg, #ffffff 0%, #9fb6d4 100%);
+  .font-display {
+    font-family: var(--font-display), Georgia, serif;
+  }
+
+  /* Titular en oro metalico con brillo en movimiento. */
+  .text-gold {
+    background: linear-gradient(
+      110deg,
+      #fbf4dc 0%,
+      #e8c16a 30%,
+      #fff7e0 45%,
+      #dca73d 60%,
+      #a87a22 100%
+    );
+    background-size: 200% auto;
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    animation: sheen 6s linear infinite;
+  }
+
+  .text-ghost {
+    background: linear-gradient(180deg, #ffffff 0%, #b9c6da 100%);
     -webkit-background-clip: text;
     background-clip: text;
     color: transparent;
@@ -65,5 +94,8 @@
     animation-iteration-count: 1 !important;
     transition-duration: 0.001ms !important;
     scroll-behavior: auto !important;
+  }
+  .text-gold {
+    animation: none !important;
   }
 }

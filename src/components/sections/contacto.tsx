@@ -6,6 +6,7 @@ import { SectionHeader } from "@/components/section-header";
 import { Mail, Globe, WhatsApp } from "@/components/icons";
 import { waLink } from "@/lib/format";
 import { useLang } from "@/i18n/provider";
+import { Reveal } from "@/components/reveal";
 
 export function Contacto() {
   const { t } = useLang();
@@ -19,10 +20,10 @@ export function Contacto() {
           descripcion={t.contacto.descripcion}
         />
 
-        <div className="mx-auto mt-12 max-w-4xl">
+        <Reveal className="mx-auto mt-12 max-w-4xl">
           <a
             href={`mailto:${SITE.correo}`}
-            className="group flex flex-col items-start justify-between gap-4 rounded-2xl border border-line bg-gradient-to-b from-panel-2 to-panel p-6 shadow-panel transition-colors hover:border-brand-400/40 sm:flex-row sm:items-center"
+            className="group flex flex-col items-start justify-between gap-4 rounded-2xl border border-line bg-gradient-to-b from-panel-2 to-panel p-6 shadow-panel transition-all duration-300 hover:-translate-y-1 hover:border-brand-400/40 hover:shadow-lift sm:flex-row sm:items-center"
           >
             <span className="flex items-center gap-4">
               <span className="inline-flex h-12 w-12 items-center justify-center rounded-xl border border-line bg-white/5 text-brand-300">
@@ -80,7 +81,7 @@ export function Contacto() {
               </div>
             ))}
           </div>
-        </div>
+        </Reveal>
       </div>
     </section>
   );

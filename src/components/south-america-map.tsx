@@ -34,8 +34,8 @@ export function SouthAmericaMap({ className }: { className?: string }) {
         >
           <defs>
             <linearGradient id="ags-hl" x1="0" y1="0" x2="0" y2="1">
-              <stop offset="0%" stopColor="#38bdf8" />
-              <stop offset="100%" stopColor="#0ea5e9" />
+              <stop offset="0%" stopColor="#f0d27e" />
+              <stop offset="100%" stopColor="#c9962e" />
             </linearGradient>
           </defs>
 
@@ -44,8 +44,8 @@ export function SouthAmericaMap({ className }: { className?: string }) {
             <path
               key={c.iso}
               d={c.d}
-              fill="#0d1626"
-              stroke="rgba(148,163,184,0.16)"
+              fill="#0c1a30"
+              stroke="rgba(214,178,94,0.14)"
               strokeWidth={1}
             />
           ))}
@@ -56,18 +56,28 @@ export function SouthAmericaMap({ className }: { className?: string }) {
               key={c.iso}
               d={c.d}
               fill="url(#ags-hl)"
-              stroke="#7dd3fc"
+              stroke="#fbf4dc"
               strokeWidth={1.4}
-              fillOpacity={0.92}
+              fillOpacity={0.95}
             />
           ))}
 
-          {/* Marcadores. */}
-          {SA_MARKERS.map((m) => (
+          {/* Marcadores con anillo pulsante. */}
+          {SA_MARKERS.map((m, i) => (
             <g key={m.iso}>
-              <circle cx={m.x} cy={m.y} r={18} fill="rgba(125,211,252,0.25)" />
-              <circle cx={m.x} cy={m.y} r={8} fill="#ffffff" />
-              <circle cx={m.x} cy={m.y} r={4} fill="#0ea5e9" />
+              <circle
+                cx={m.x}
+                cy={m.y}
+                r={12}
+                fill="none"
+                stroke="rgba(232,193,106,0.7)"
+                strokeWidth={3}
+                className="origin-center animate-pulse-ring [transform-box:fill-box]"
+                style={{ animationDelay: `${i * 0.6}s` }}
+              />
+              <circle cx={m.x} cy={m.y} r={16} fill="rgba(232,193,106,0.18)" />
+              <circle cx={m.x} cy={m.y} r={7.5} fill="#fbf4dc" />
+              <circle cx={m.x} cy={m.y} r={3.5} fill="#a87a22" />
             </g>
           ))}
         </svg>

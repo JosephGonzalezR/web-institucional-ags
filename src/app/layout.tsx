@@ -19,6 +19,13 @@ const mono = localFont({
   display: "swap",
 });
 
+const display = localFont({
+  src: "./fonts/Fraunces.woff2",
+  variable: "--font-display",
+  weight: "300 900",
+  display: "swap",
+});
+
 const titulo = `${SITE.nombre} | Presencia academica en Peru, Chile y Argentina`;
 
 export const metadata: Metadata = {
@@ -73,7 +80,10 @@ export default function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="es" className={`${sans.variable} ${mono.variable}`}>
+    <html
+      lang="es"
+      className={`${sans.variable} ${mono.variable} ${display.variable}`}
+    >
       <body className="font-sans antialiased">
         <JsonLd />
         <LanguageProvider>{children}</LanguageProvider>

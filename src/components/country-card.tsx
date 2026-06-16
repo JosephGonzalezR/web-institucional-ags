@@ -94,7 +94,7 @@ export function CountryCard({ pais }: { pais: Pais }) {
   const { t } = useLang();
 
   return (
-    <article className="flex flex-col overflow-hidden rounded-2xl border border-line bg-panel shadow-panel">
+    <article className="group flex flex-col overflow-hidden rounded-2xl border border-line bg-panel shadow-panel transition-all duration-300 hover:-translate-y-1.5 hover:border-brand-400/40 hover:shadow-lift">
       <div className="flex items-start justify-between gap-3 border-b border-line p-5">
         <div className="min-w-0">
           <div className="flex items-center gap-2.5">

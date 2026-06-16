@@ -3,6 +3,7 @@
 import { SectionHeader } from "@/components/section-header";
 import { Building, Network, Users } from "@/components/icons";
 import { useLang } from "@/i18n/provider";
+import { Reveal } from "@/components/reveal";
 
 const ICONOS = [Building, Network, Users];
 
@@ -19,35 +20,37 @@ export function Nosotros() {
         />
 
         <div className="mt-10 grid gap-12 lg:grid-cols-[1.4fr_1fr]">
-          <div className="space-y-5">
+          <Reveal className="space-y-5">
             {t.nosotros.parrafos.map((parrafo, i) => (
-              <p key={i} className="text-base leading-relaxed text-slate-300">
+              <p
+                key={i}
+                className={i === 0 ? "text-lg leading-relaxed text-slate-200" : "text-base leading-relaxed text-slate-400"}
+              >
                 {parrafo}
               </p>
             ))}
-          </div>
+          </Reveal>
 
-          <ul className="space-y-3">
+          <div className="space-y-3">
             {t.nosotros.pilares.map((p, i) => {
               const Icono = ICONOS[i] ?? Building;
               return (
-                <li
-                  key={p.titulo}
-                  className="flex items-start gap-4 rounded-xl border border-line bg-panel p-5"
-                >
-                  <span className="mt-0.5 inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-lg border border-line bg-white/5 text-brand-300">
-                    <Icono className="h-5 w-5" />
-                  </span>
-                  <div>
-                    <p className="font-medium text-white">{p.titulo}</p>
-                    <p className="mt-1 text-sm leading-relaxed text-slate-400">
-                      {p.texto}
-                    </p>
+                <Reveal key={p.titulo} delay={i * 90}>
+                  <div className="group flex items-start gap-4 rounded-xl border border-line bg-panel p-5 transition-colors hover:border-brand-400/40">
+                    <span className="mt-0.5 inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-lg border border-line bg-white/5 text-brand-300 transition-colors group-hover:bg-brand-400/10">
+                      <Icono className="h-5 w-5" />
+                    </span>
+                    <div>
+                      <p className="font-medium text-white">{p.titulo}</p>
+                      <p className="mt-1 text-sm leading-relaxed text-slate-400">
+                        {p.texto}
+                      </p>
+                    </div>
                   </div>
-                </li>
+                </Reveal>
               );
             })}
-          </ul>
+          </div>
         </div>
       </div>
     </section>

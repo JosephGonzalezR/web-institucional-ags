@@ -14,54 +14,85 @@ const config: Config = {
     },
     extend: {
       colors: {
-        // Paleta institucional sobria y tecnologica (modo oscuro).
-        ink: "#060a13",
-        panel: "#0b1220",
-        "panel-2": "#101a2e",
-        line: "rgba(148, 163, 184, 0.14)",
+        // Identidad AGS: oro metalico sobre azul marino profundo (del logo).
+        ink: "#0a1424",
+        panel: "#0f1f38",
+        "panel-2": "#15294a",
+        line: "rgba(214, 178, 94, 0.16)",
+        // Oro de marca (el aguila del logo). brand y accent comparten escala.
         brand: {
-          50: "#ecfeff",
-          100: "#cffafe",
-          200: "#a5f3fc",
-          300: "#67e8f9",
-          400: "#22d3ee",
-          500: "#06b6d4",
-          600: "#0891b2",
-          700: "#0e7490",
+          50: "#fbf4dc",
+          100: "#f6e8b6",
+          200: "#efd488",
+          300: "#e8c16a",
+          400: "#dca73d",
+          500: "#c9962e",
+          600: "#a87a22",
+          700: "#85601b",
         },
         accent: {
-          400: "#38bdf8",
-          500: "#0ea5e9",
-          600: "#0284c7",
+          400: "#e8c16a",
+          500: "#dca73d",
+          600: "#c9962e",
+        },
+        navy: {
+          800: "#0f1f38",
+          900: "#0a1424",
+          950: "#070f1c",
         },
       },
       fontFamily: {
         sans: ["var(--font-sans)", "ui-sans-serif", "system-ui", "sans-serif"],
+        display: ["var(--font-display)", "Georgia", "serif"],
         mono: ["var(--font-geist-mono)", "ui-monospace", "monospace"],
       },
       boxShadow: {
-        glow: "0 0 0 1px rgba(56,189,248,0.18), 0 18px 60px -20px rgba(56,189,248,0.35)",
-        panel: "0 1px 0 0 rgba(255,255,255,0.04) inset, 0 24px 60px -32px rgba(0,0,0,0.8)",
+        glow: "0 0 0 1px rgba(220,167,61,0.22), 0 20px 60px -18px rgba(220,167,61,0.35)",
+        gold: "0 18px 50px -16px rgba(220,167,61,0.4)",
+        panel:
+          "0 1px 0 0 rgba(255,255,255,0.04) inset, 0 24px 60px -32px rgba(0,0,0,0.85)",
+        lift: "0 30px 70px -28px rgba(0,0,0,0.75), 0 0 0 1px rgba(220,167,61,0.25)",
       },
       backgroundImage: {
         "grid-faint":
-          "linear-gradient(rgba(148,163,184,0.06) 1px, transparent 1px), linear-gradient(90deg, rgba(148,163,184,0.06) 1px, transparent 1px)",
+          "linear-gradient(rgba(214,178,94,0.07) 1px, transparent 1px), linear-gradient(90deg, rgba(214,178,94,0.07) 1px, transparent 1px)",
         "radial-fade":
-          "radial-gradient(60% 60% at 50% 0%, rgba(56,189,248,0.16) 0%, rgba(6,10,19,0) 70%)",
+          "radial-gradient(60% 60% at 50% 0%, rgba(220,167,61,0.18) 0%, rgba(10,20,36,0) 70%)",
+        "gold-sheen":
+          "linear-gradient(180deg,#fbf4dc 0%,#e8c16a 45%,#c9962e 75%,#a87a22 100%)",
       },
       keyframes: {
         "fade-up": {
-          from: { opacity: "0", transform: "translateY(12px)" },
+          from: { opacity: "0", transform: "translateY(16px)" },
           to: { opacity: "1", transform: "translateY(0)" },
         },
-        pulse_ring: {
-          "0%": { transform: "scale(0.6)", opacity: "0.7" },
-          "100%": { transform: "scale(2.2)", opacity: "0" },
+        "pulse-ring": {
+          "0%": { transform: "scale(0.5)", opacity: "0.7" },
+          "100%": { transform: "scale(2.4)", opacity: "0" },
+        },
+        float: {
+          "0%,100%": { transform: "translate(0,0) scale(1)" },
+          "50%": { transform: "translate(0,-24px) scale(1.06)" },
+        },
+        "float-slow": {
+          "0%,100%": { transform: "translate(0,0) scale(1)" },
+          "50%": { transform: "translate(18px,16px) scale(1.1)" },
+        },
+        sheen: {
+          "0%": { backgroundPosition: "0% 50%" },
+          "100%": { backgroundPosition: "200% 50%" },
+        },
+        "spin-slow": {
+          to: { transform: "rotate(360deg)" },
         },
       },
       animation: {
-        "fade-up": "fade-up 0.6s ease-out both",
-        "pulse-ring": "pulse_ring 2.4s ease-out infinite",
+        "fade-up": "fade-up 0.7s cubic-bezier(0.22,1,0.36,1) both",
+        "pulse-ring": "pulse-ring 2.6s ease-out infinite",
+        float: "float 9s ease-in-out infinite",
+        "float-slow": "float-slow 13s ease-in-out infinite",
+        sheen: "sheen 6s linear infinite",
+        "spin-slow": "spin-slow 32s linear infinite",
       },
     },
   },
