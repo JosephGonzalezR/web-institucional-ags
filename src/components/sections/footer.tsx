@@ -1,16 +1,19 @@
+"use client";
+
 import Image from "next/image";
 import { SITE } from "@/config/site";
 import { PAISES, REDES_ORDEN } from "@/config/paises";
 import { RED_ICONS, Globe, Mail } from "@/components/icons";
+import { useLang } from "@/i18n/provider";
 
 export function Footer() {
+  const { t } = useLang();
   const anio = new Date().getFullYear();
 
   return (
     <footer className="bg-ink">
       <div className="container-pad py-14">
         <div className="grid gap-10 md:grid-cols-[1.4fr_1fr_1fr]">
-          {/* Marca */}
           <div>
             <div className="flex items-center gap-2.5">
               <Image
@@ -23,7 +26,7 @@ export function Footer() {
               <span className="font-semibold text-white">{SITE.sigla}</span>
             </div>
             <p className="mt-4 max-w-sm text-sm leading-relaxed text-slate-400">
-              {SITE.descripcion}
+              {t.footer.descripcion}
             </p>
             <a
               href={`mailto:${SITE.correo}`}
@@ -34,10 +37,9 @@ export function Footer() {
             </a>
           </div>
 
-          {/* Presencia por pais */}
           <div className="md:col-span-2">
             <h3 className="text-xs font-semibold uppercase tracking-wider text-slate-400">
-              Presencia por pais
+              {t.footer.presenciaTitulo}
             </h3>
             <ul className="mt-5 space-y-4">
               {PAISES.map((p) => (
@@ -52,7 +54,7 @@ export function Footer() {
                         href={p.web}
                         target="_blank"
                         rel="noopener noreferrer"
-                        aria-label={`Sitio web de ${p.marca}`}
+                        aria-label={`${t.card.sitioWeb} ${p.marca}`}
                         className="transition-colors hover:text-white"
                       >
                         <Globe className="h-[18px] w-[18px]" />
@@ -68,7 +70,7 @@ export function Footer() {
                           href={r.url}
                           target="_blank"
                           rel="noopener noreferrer"
-                          aria-label={`${red} de ${p.marca}`}
+                          aria-label={`${t.redes[red]} ${p.marca}`}
                           className="transition-colors hover:text-white"
                         >
                           <Icono className="h-[18px] w-[18px]" />
@@ -84,9 +86,9 @@ export function Footer() {
 
         <div className="mt-12 flex flex-col items-center justify-between gap-3 border-t border-line pt-6 text-xs text-slate-500 sm:flex-row">
           <p>
-            &copy; {anio} {SITE.nombre}. Todos los derechos reservados.
+            &copy; {anio} {SITE.nombre}. {t.footer.derechos}
           </p>
-          <p>Operacion en Peru, Chile y Argentina.</p>
+          <p>{t.footer.operacion}</p>
         </div>
       </div>
     </footer>

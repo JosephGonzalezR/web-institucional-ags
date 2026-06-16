@@ -1,107 +1,106 @@
 import { cn } from "@/lib/utils";
+import { SA_COUNTRIES, SA_MARKERS, SA_VIEWBOX } from "@/config/sa-geo";
 import { PAISES } from "@/config/paises";
 
 /**
- * Mapa estilizado de Sudamerica que resalta Peru, Chile y Argentina.
- * Silueta SVG decorativa + marcadores posicionados en porcentaje sobre el
- * contenedor (texto nitido y responsive). No requiere JavaScript.
+ * Mapa de Sudamerica con geografia real (GeoJSON proyectado, ver
+ * scripts/gen-map.mjs). Resalta Peru, Chile y Argentina; el resto del
+ * continente queda atenuado como contexto. Marcadores en las capitales.
  */
 
-const SILUETA =
-  "M150,40 C175,34 205,42 214,58 C250,70 292,120 298,160 C306,196 300,224 268,244 " +
-  "C256,266 250,286 236,300 C228,330 214,352 198,372 C190,400 182,424 173,430 " +
-  "C165,424 160,402 158,384 C150,360 146,338 150,320 C128,300 110,268 104,238 " +
-  "C92,222 88,206 98,196 C104,168 100,150 108,132 C112,104 120,74 134,58 " +
-  "C138,50 144,42 150,40 Z";
+const [, , VB_W, VB_H] = SA_VIEWBOX.split(" ").map(Number);
 
-// Posicion de cada marcador en % del contenedor (coincide con el viewBox).
-const MARCADORES: Record<string, { x: number; y: number; lado: "izq" | "der" }> = {
-  PE: { x: 31, y: 43, lado: "izq" },
-  CL: { x: 41, y: 72, lado: "izq" },
-  AR: { x: 56, y: 72, lado: "der" },
+const ETIQUETA_LADO: Record<string, "izq" | "der"> = {
+  PER: "der",
+  CHL: "izq",
+  ARG: "der",
+};
+
+const POR_ISO: Record<string, (typeof PAISES)[number] | undefined> = {
+  PER: PAISES.find((p) => p.codigo === "PE"),
+  CHL: PAISES.find((p) => p.codigo === "CL"),
+  ARG: PAISES.find((p) => p.codigo === "AR"),
 };
 
 export function SouthAmericaMap({ className }: { className?: string }) {
   return (
-    <div className={cn("relative mx-auto w-full max-w-[420px]", className)}>
-      <div className="relative aspect-[360/460]">
+    <div className={cn("relative mx-auto w-full max-w-[300px]", className)}>
+      <div className="relative" style={{ aspectRatio: `${VB_W} / ${VB_H}` }}>
         <svg
-          viewBox="0 0 360 460"
-          className="absolute inset-0 h-full w-full"
+          viewBox={SA_VIEWBOX}
+          className="absolute inset-0 h-full w-full overflow-visible"
           role="img"
           aria-label="Mapa de Sudamerica con Peru, Chile y Argentina resaltados"
         >
           <defs>
-            <linearGradient id="ags-cont" x1="0" y1="0" x2="0" y2="1">
-              <stop offset="0%" stopColor="#16263f" />
-              <stop offset="100%" stopColor="#0c1626" />
-            </linearGradient>
-            <pattern
-              id="ags-dots"
-              width="12"
-              height="12"
-              patternUnits="userSpaceOnUse"
-            >
-              <circle cx="2" cy="2" r="1" fill="rgba(148,163,184,0.18)" />
-            </pattern>
-            <linearGradient id="ags-link" x1="0" y1="0" x2="1" y2="1">
+            <linearGradient id="ags-hl" x1="0" y1="0" x2="0" y2="1">
               <stop offset="0%" stopColor="#38bdf8" />
-              <stop offset="100%" stopColor="#22d3ee" />
+              <stop offset="100%" stopColor="#0ea5e9" />
             </linearGradient>
           </defs>
 
-          <path d={SILUETA} fill="url(#ags-cont)" stroke="rgba(56,189,248,0.35)" strokeWidth="1.2" />
-          <path d={SILUETA} fill="url(#ags-dots)" opacity="0.7" />
+          {/* Continente de contexto (atenuado). */}
+          {SA_COUNTRIES.filter((c) => !c.hl).map((c) => (
+            <path
+              key={c.iso}
+              d={c.d}
+              fill="#0d1626"
+              stroke="rgba(148,163,184,0.16)"
+              strokeWidth={1}
+            />
+          ))}
 
-          {/* Red de conexion entre los tres puntos. */}
-          <polyline
-            points="112,198 150,331 202,331"
-            fill="none"
-            stroke="url(#ags-link)"
-            strokeWidth="1.4"
-            strokeDasharray="4 4"
-            opacity="0.8"
-          />
-          {[
-            [112, 198],
-            [150, 331],
-            [202, 331],
-          ].map(([cx, cy]) => (
-            <g key={`${cx}-${cy}`}>
-              <circle cx={cx} cy={cy} r="9" fill="rgba(56,189,248,0.16)" />
-              <circle cx={cx} cy={cy} r="4" fill="#38bdf8" />
+          {/* Paises resaltados. */}
+          {SA_COUNTRIES.filter((c) => c.hl).map((c) => (
+            <path
+              key={c.iso}
+              d={c.d}
+              fill="url(#ags-hl)"
+              stroke="#7dd3fc"
+              strokeWidth={1.4}
+              fillOpacity={0.92}
+            />
+          ))}
+
+          {/* Marcadores. */}
+          {SA_MARKERS.map((m) => (
+            <g key={m.iso}>
+              <circle cx={m.x} cy={m.y} r={18} fill="rgba(125,211,252,0.25)" />
+              <circle cx={m.x} cy={m.y} r={8} fill="#ffffff" />
+              <circle cx={m.x} cy={m.y} r={4} fill="#0ea5e9" />
             </g>
           ))}
         </svg>
 
-        {/* Etiquetas de pais. */}
-        {PAISES.map((p) => {
-          const m = MARCADORES[p.codigo];
-          if (!m) return null;
+        {/* Etiquetas de pais (texto nitido sobre el SVG). */}
+        {SA_MARKERS.map((m) => {
+          const pais = POR_ISO[m.iso];
+          if (!pais) return null;
+          const lado = ETIQUETA_LADO[m.iso] ?? "der";
           return (
             <div
-              key={p.codigo}
-              className="absolute -translate-y-1/2"
+              key={m.iso}
+              className="absolute"
               style={{
-                left: `${m.x}%`,
-                top: `${m.y}%`,
+                left: `${(m.x / VB_W) * 100}%`,
+                top: `${(m.y / VB_H) * 100}%`,
                 transform:
-                  m.lado === "izq"
+                  lado === "izq"
                     ? "translate(-100%, -50%)"
                     : "translate(0, -50%)",
               }}
             >
               <div
                 className={cn(
-                  "flex items-center gap-2 rounded-full border border-line bg-ink/85 px-2.5 py-1 shadow-glow backdrop-blur",
-                  m.lado === "izq" ? "mr-3" : "ml-3",
+                  "flex items-center gap-1.5 rounded-full border border-line bg-ink/90 px-2.5 py-1 shadow-glow backdrop-blur",
+                  lado === "izq" ? "mr-3" : "ml-3",
                 )}
               >
                 <span aria-hidden="true" className="text-sm leading-none">
-                  {p.bandera}
+                  {pais.bandera}
                 </span>
                 <span className="whitespace-nowrap text-xs font-medium text-white">
-                  {p.pais}
+                  {pais.pais}
                 </span>
               </div>
             </div>

@@ -1,8 +1,9 @@
+"use client";
+
 import {
   type Pais,
   type RedKey,
   REDES_ORDEN,
-  REDES_META,
 } from "@/config/paises";
 import {
   RED_ICONS,
@@ -11,8 +12,9 @@ import {
   ArrowUpRight,
   MapPin,
 } from "@/components/icons";
-import { fmt, fmtFecha, waLink } from "@/lib/format";
+import { fmt, waLink } from "@/lib/format";
 import { cn } from "@/lib/utils";
+import { useLang } from "@/i18n/provider";
 
 const CHIP: Record<RedKey, string> = {
   instagram:
@@ -21,10 +23,9 @@ const CHIP: Record<RedKey, string> = {
   tiktok: "bg-black text-white ring-1 ring-white/15",
 };
 
-function handleDeUrl(red: RedKey, url: string): string | null {
+function handleDeUrl(url: string): string | null {
   try {
     const u = new URL(url);
-    if (red === "facebook") return "Pagina oficial";
     const seg = u.pathname.split("/").filter(Boolean).pop() ?? "";
     const limpio = seg.replace(/^@/, "");
     return limpio ? `@${limpio}` : null;
@@ -34,10 +35,14 @@ function handleDeUrl(red: RedKey, url: string): string | null {
 }
 
 function RedFila({ pais, red }: { pais: Pais; red: RedKey }) {
+  const { t } = useLang();
   const r = pais.redes[red];
   const Icono = RED_ICONS[red];
-  const nombre = REDES_META[red].nombre;
-  const handle = r.url ? handleDeUrl(red, r.url) : null;
+  const nombre = t.redes[red];
+  const sub =
+    red === "facebook"
+      ? t.card.paginaOficial
+      : (r.url ? handleDeUrl(r.url) : null) ?? t.card.verPerfil;
 
   const contenido = (
     <>
@@ -52,9 +57,7 @@ function RedFila({ pais, red }: { pais: Pais; red: RedKey }) {
         </span>
         <span className="min-w-0">
           <span className="block text-sm font-medium text-white">{nombre}</span>
-          <span className="block truncate text-xs text-slate-400">
-            {r.url ? handle ?? "Ver perfil" : "Cuenta en proceso"}
-          </span>
+          <span className="block truncate text-xs text-slate-400">{sub}</span>
         </span>
       </span>
 
@@ -65,42 +68,33 @@ function RedFila({ pais, red }: { pais: Pais; red: RedKey }) {
               {fmt(r.seguidores)}
             </span>
             <span className="block text-[10px] uppercase tracking-wide text-slate-500">
-              seguidores
+              {t.card.seguidores}
             </span>
           </span>
         ) : (
-          <span className="text-xs text-slate-500">Por confirmar</span>
+          <span className="text-xs text-slate-400">{t.card.verPerfil}</span>
         )}
-        {r.url ? (
-          <ArrowUpRight className="h-4 w-4 text-slate-500 transition-colors group-hover:text-brand-300" />
-        ) : null}
+        <ArrowUpRight className="h-4 w-4 text-slate-500 transition-colors group-hover:text-brand-300" />
       </span>
     </>
   );
 
   const base =
-    "flex items-center justify-between gap-3 rounded-xl border border-line px-3 py-2.5";
+    "group flex items-center justify-between gap-3 rounded-xl border border-line bg-white/[0.02] px-3 py-2.5 transition-colors hover:bg-white/[0.06]";
 
-  if (r.url) {
-    return (
-      <a
-        href={r.url}
-        target="_blank"
-        rel="noopener noreferrer"
-        className={cn(base, "group bg-white/[0.02] transition-colors hover:bg-white/[0.06]")}
-      >
-        {contenido}
-      </a>
-    );
-  }
-  return <div className={cn(base, "bg-white/[0.01] opacity-70")}>{contenido}</div>;
+  if (!r.url) return <div className={base}>{contenido}</div>;
+  return (
+    <a href={r.url} target="_blank" rel="noopener noreferrer" className={base}>
+      {contenido}
+    </a>
+  );
 }
 
 export function CountryCard({ pais }: { pais: Pais }) {
-  const fecha = pais.redes.instagram.fecha;
+  const { t } = useLang();
+
   return (
     <article className="flex flex-col overflow-hidden rounded-2xl border border-line bg-panel shadow-panel">
-      {/* Cabecera */}
       <div className="flex items-start justify-between gap-3 border-b border-line p-5">
         <div className="min-w-0">
           <div className="flex items-center gap-2.5">
@@ -118,17 +112,15 @@ export function CountryCard({ pais }: { pais: Pais }) {
       </div>
 
       <p className="px-5 pt-4 text-sm leading-relaxed text-slate-400">
-        {pais.descripcion}
+        {t.paises[pais.codigo].descripcion}
       </p>
 
-      {/* Redes */}
       <div className="mt-4 flex flex-col gap-2 px-5">
         {REDES_ORDEN.map((red) => (
           <RedFila key={red} pais={pais} red={red} />
         ))}
       </div>
 
-      {/* Contacto / acciones */}
       <div className="mt-5 flex flex-wrap gap-2 border-t border-line p-5 pt-4">
         {pais.web ? (
           <a
@@ -138,7 +130,7 @@ export function CountryCard({ pais }: { pais: Pais }) {
             className="inline-flex items-center gap-2 rounded-full border border-line bg-white/[0.03] px-3.5 py-2 text-xs font-medium text-slate-100 transition-colors hover:bg-white/[0.07]"
           >
             <Globe className="h-4 w-4 text-brand-300" />
-            Sitio web
+            {t.card.sitioWeb}
           </a>
         ) : null}
         {pais.whatsapp ? (
@@ -149,19 +141,10 @@ export function CountryCard({ pais }: { pais: Pais }) {
             className="inline-flex items-center gap-2 rounded-full border border-line bg-white/[0.03] px-3.5 py-2 text-xs font-medium text-slate-100 transition-colors hover:bg-white/[0.07]"
           >
             <WhatsApp className="h-4 w-4 text-[#25D366]" />
-            WhatsApp
+            {t.card.whatsapp}
           </a>
-        ) : (
-          <span className="inline-flex items-center gap-2 rounded-full border border-line px-3.5 py-2 text-xs text-slate-500">
-            <WhatsApp className="h-4 w-4" />
-            WhatsApp por confirmar
-          </span>
-        )}
+        ) : null}
       </div>
-
-      <p className="px-5 pb-4 text-[11px] text-slate-600">
-        Datos capturados el {fmtFecha(fecha)}.
-      </p>
     </article>
   );
 }

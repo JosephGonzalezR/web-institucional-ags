@@ -3,6 +3,7 @@ import localFont from "next/font/local";
 import "./globals.css";
 import { SITE } from "@/config/site";
 import { JsonLd } from "@/components/json-ld";
+import { LanguageProvider } from "@/i18n/provider";
 
 const sans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -75,7 +76,7 @@ export default function RootLayout({
     <html lang="es" className={`${sans.variable} ${mono.variable}`}>
       <body className="font-sans antialiased">
         <JsonLd />
-        {children}
+        <LanguageProvider>{children}</LanguageProvider>
       </body>
     </html>
   );
