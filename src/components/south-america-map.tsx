@@ -3,9 +3,9 @@ import { SA_COUNTRIES, SA_MARKERS, SA_VIEWBOX } from "@/config/sa-geo";
 import { PAISES } from "@/config/paises";
 
 /**
- * Mapa de Sudamerica (GeoJSON de alta resolucion, bordes suaves) con Peru,
- * Chile y Argentina resaltados. Cada pais sale con una flecha horizontal hacia
- * su marca. Estetica sobria / ejecutiva: navy profundo + oro contenido.
+ * Mapa de Sudamerica (GeoJSON de alta resolucion) con Peru, Chile y Argentina
+ * resaltados. Fronteras marcadas; una banderita marca cada pais sobre el mapa y
+ * una flecha sale hacia su marca. Estetica sobria / ejecutiva.
  */
 
 const [, , MAP_W, MAP_H] = SA_VIEWBOX.split(" ").map(Number);
@@ -22,7 +22,6 @@ const POR_ISO: Record<string, (typeof PAISES)[number] | undefined> = {
   ARG: PAISES.find((p) => p.codigo === "AR"),
 };
 
-// Lado y punto donde termina la flecha (a la altura del marcador).
 const CALLOUT: Record<string, { ax: number; side: "izq" | "der" }> = {
   PER: { ax: -60, side: "izq" },
   CHL: { ax: -60, side: "izq" },
@@ -63,27 +62,27 @@ export function SouthAmericaMap({ className }: { className?: string }) {
             </marker>
           </defs>
 
-          {/* Continente de contexto (navy profundo, borde sutil). */}
+          {/* Continente de contexto con FRONTERAS marcadas. */}
           {SA_COUNTRIES.filter((c) => !c.hl).map((c) => (
             <path
               key={c.iso}
               d={c.d}
-              fill="#0e1c31"
-              stroke="rgba(255,255,255,0.08)"
-              strokeWidth={1}
+              fill="#0e1f37"
+              stroke="rgba(190,210,236,0.38)"
+              strokeWidth={1.6}
               strokeLinejoin="round"
             />
           ))}
 
-          {/* Paises resaltados (oro contenido, borde limpio). */}
+          {/* Paises resaltados (oro contenido, borde claro). */}
           {SA_COUNTRIES.filter((c) => c.hl).map((c) => (
             <path
               key={c.iso}
               d={c.d}
               fill="url(#ags-hl)"
               fillOpacity={0.95}
-              stroke="#efe0b4"
-              strokeWidth={1.2}
+              stroke="#f6ecd2"
+              strokeWidth={1.8}
               strokeLinejoin="round"
             />
           ))}
@@ -107,27 +106,43 @@ export function SouthAmericaMap({ className }: { className?: string }) {
             );
           })}
 
-          {/* Marcadores discretos con anillo pulsante. */}
+          {/* Anillo pulsante detras de cada banderita. */}
           {SA_MARKERS.map((m, i) => (
-            <g key={m.iso}>
-              <circle
-                cx={m.x}
-                cy={m.y}
-                r={11}
-                fill="none"
-                stroke="rgba(201,162,74,0.6)"
-                strokeWidth={2.5}
-                className="origin-center animate-pulse-ring [transform-box:fill-box]"
-                style={{ animationDelay: `${i * 0.7}s` }}
-              />
-              <circle cx={m.x} cy={m.y} r={13} fill="rgba(201,162,74,0.16)" />
-              <circle cx={m.x} cy={m.y} r={6} fill="#f3ead2" />
-              <circle cx={m.x} cy={m.y} r={3} fill="#8a6a1e" />
-            </g>
+            <circle
+              key={`ring-${m.iso}`}
+              cx={m.x}
+              cy={m.y}
+              r={13}
+              fill="none"
+              stroke="rgba(201,162,74,0.6)"
+              strokeWidth={2.5}
+              className="origin-center animate-pulse-ring [transform-box:fill-box]"
+              style={{ animationDelay: `${i * 0.7}s` }}
+            />
           ))}
         </svg>
 
-        {/* Etiquetas de marca (sobrias). */}
+        {/* Banderitas sobre el mapa (marcan cada pais). */}
+        {SA_MARKERS.map((m) => {
+          const pais = POR_ISO[m.iso];
+          if (!pais) return null;
+          return (
+            <div
+              key={`flag-${m.iso}`}
+              className="absolute -translate-x-1/2 -translate-y-1/2"
+              style={{
+                left: `${pct(m.x, VB_X, VB_W)}%`,
+                top: `${pct(m.y, VB_Y, VB_H)}%`,
+              }}
+            >
+              <span className="flex h-7 w-7 items-center justify-center rounded-full border border-white/30 bg-ink/85 text-[15px] leading-none shadow-[0_4px_12px_rgba(0,0,0,0.55)] backdrop-blur">
+                {pais.bandera}
+              </span>
+            </div>
+          );
+        })}
+
+        {/* Etiquetas de marca (sobrias, sin repetir bandera ni pais). */}
         {SA_MARKERS.map((m) => {
           const pais = POR_ISO[m.iso];
           const c = CALLOUT[m.iso];
@@ -149,20 +164,15 @@ export function SouthAmericaMap({ className }: { className?: string }) {
             >
               <div
                 className={cn(
-                  "flex items-center gap-2 rounded-md border border-white/10 bg-[#0b1626]/95 px-2.5 py-1.5 shadow-[0_10px_26px_-10px_rgba(0,0,0,0.75)] backdrop-blur",
-                  c.side === "izq" ? "mr-1.5" : "ml-1.5",
+                  "rounded-md border border-white/10 bg-[#0b1626]/95 px-3 py-1.5 shadow-[0_10px_26px_-10px_rgba(0,0,0,0.75)] backdrop-blur",
+                  c.side === "izq" ? "mr-1.5 text-right" : "ml-1.5 text-left",
                 )}
               >
-                <span aria-hidden="true" className="text-base leading-none">
-                  {pais.bandera}
+                <span className="block whitespace-nowrap text-[13px] font-semibold tracking-tight text-white">
+                  {marcaCorta(pais.marca, pais.pais)}
                 </span>
-                <span className="leading-tight">
-                  <span className="block whitespace-nowrap text-[13px] font-semibold tracking-tight text-white">
-                    {marcaCorta(pais.marca, pais.pais)}
-                  </span>
-                  <span className="block text-[11px] font-medium text-slate-400">
-                    {pais.pais}
-                  </span>
+                <span className="block text-[11px] font-medium text-slate-400">
+                  {pais.pais}
                 </span>
               </div>
             </div>
