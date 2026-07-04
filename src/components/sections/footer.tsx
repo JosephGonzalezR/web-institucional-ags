@@ -4,6 +4,7 @@ import Image from "next/image";
 import { SITE } from "@/config/site";
 import { PAISES, REDES_ORDEN } from "@/config/paises";
 import { RED_ICONS, Globe, Mail } from "@/components/icons";
+import { asset } from "@/lib/asset";
 import { useLang } from "@/i18n/provider";
 
 export function Footer() {
@@ -16,7 +17,7 @@ export function Footer() {
         <div className="grid gap-12 md:grid-cols-[1.4fr_1fr]">
           <div>
             <Image
-              src="/logo-lockup-dark.png"
+              src={asset("/logo-lockup-dark.png")}
               alt={`${SITE.nombre} logo`}
               width={200}
               height={104}

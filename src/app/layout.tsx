@@ -27,6 +27,8 @@ const display = localFont({
 });
 
 const titulo = `${SITE.nombre} | Presencia academica en Peru, Chile y Argentina`;
+// Prefijo para assets estaticos (favicon) cuando el sitio va en un subpath (preview GitHub Pages).
+const BP = process.env.NEXT_PUBLIC_BASE_PATH || "";
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE.url),
@@ -75,11 +77,11 @@ export const metadata: Metadata = {
   },
   icons: {
     icon: [
-      { url: "/favicon.ico", sizes: "any" },
-      { url: "/icon-192.png", type: "image/png", sizes: "192x192" },
-      { url: "/icon-512.png", type: "image/png", sizes: "512x512" },
+      { url: `${BP}/favicon.ico`, sizes: "any" },
+      { url: `${BP}/icon-192.png`, type: "image/png", sizes: "192x192" },
+      { url: `${BP}/icon-512.png`, type: "image/png", sizes: "512x512" },
     ],
-    apple: "/apple-touch-icon-180.png",
+    apple: `${BP}/apple-touch-icon-180.png`,
   },
 };
 

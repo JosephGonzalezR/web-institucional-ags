@@ -5,6 +5,7 @@ import Image from "next/image";
 import { NAV } from "@/config/site";
 import { Menu, Close } from "@/components/icons";
 import { LangSwitch } from "@/components/lang-switch";
+import { asset } from "@/lib/asset";
 import { useLang } from "@/i18n/provider";
 
 export function Navbar() {
@@ -19,7 +20,7 @@ export function Navbar() {
       >
         <a href="#inicio" className="flex items-center" aria-label="Academic Global Solutions">
           <Image
-            src="/logo-lockup.png"
+            src={asset("/logo-lockup.png")}
             alt="Academic Global Solutions"
             width={210}
             height={108}
