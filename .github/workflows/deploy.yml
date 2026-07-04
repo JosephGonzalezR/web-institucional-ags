@@ -25,9 +25,6 @@ jobs:
           cache: npm
       - run: npm ci
       - run: npm run build
-        env:
-          # PREVIEW en GitHub Pages (subpath). Al apuntar el dominio, borrar esta linea.
-          NEXT_PUBLIC_BASE_PATH: /web-institucional-ags
       - uses: actions/upload-pages-artifact@v3
         with:
           path: ./out
