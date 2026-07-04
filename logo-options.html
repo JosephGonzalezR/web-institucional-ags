@@ -1,0 +1,201 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Opciones de logo — AGS</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Plus+Jakarta+Sans:wght@500;600;700;800&family=Cormorant+Garamond:wght@600;700&display=swap" rel="stylesheet">
+<style>
+  :root{ --navy:#0a1424; --navy2:#13243f; --gold:#c9a24a; --gold2:#e8c16a; --cream:#f5efe0; }
+  *{box-sizing:border-box}
+  body{ margin:0; font-family:"Plus Jakarta Sans",system-ui,sans-serif; background:#0a1424; color:#e8eefc; }
+  header{ padding:34px 24px 10px; text-align:center; }
+  header h1{ font-family:"Fraunces",serif; font-weight:600; font-size:30px; margin:0 0 6px; }
+  header p{ color:#9fb0cc; margin:0; font-size:14px; }
+  .grid{ display:grid; grid-template-columns:repeat(auto-fill,minmax(330px,1fr)); gap:22px; padding:24px; max-width:1180px; margin:0 auto; }
+  .card{ border:1px solid rgba(255,255,255,.10); border-radius:16px; overflow:hidden; background:#0e1b30; }
+  .card h3{ margin:0; padding:14px 18px 4px; font-size:14px; font-weight:700; letter-spacing:.3px; }
+  .card .desc{ padding:0 18px 12px; font-size:12px; color:#9fb0cc; }
+  .show{ display:grid; grid-template-columns:1fr 1fr; }
+  .dark{ background:#0a1424; }
+  .light{ background:#f5efe0; }
+  .pane{ display:flex; align-items:center; justify-content:center; padding:30px 16px; min-height:150px; }
+  .row-icons{ display:flex; align-items:center; justify-content:center; gap:18px; padding:14px; border-top:1px solid rgba(255,255,255,.08); background:#0a1424; }
+  .ico{ width:46px; height:46px; }
+  .ico-sm{ width:26px; height:26px; }
+  .tag{ font-size:10px; color:#7f93b3; }
+  footer{ text-align:center; color:#7f93b3; font-size:12px; padding:10px 24px 40px; }
+</style>
+</head>
+<body>
+<header>
+  <h1>Opciones de logo — AGS</h1>
+  <p>Academic Global Solutions · estilo ejecutivo / sobrio · navy + oro. Cada opción se muestra sobre fondo oscuro y claro, y como ícono.</p>
+</header>
+
+<div class="grid">
+
+  <!-- 1. Sello redondeado (app icon) -->
+  <div class="card">
+    <h3>1 · Sello redondeado</h3>
+    <div class="desc">Monograma en placa (estilo app / favicon). Sobrio y premium.</div>
+    <div class="show">
+      <div class="pane dark">
+        <svg width="120" height="120" viewBox="0 0 200 200" aria-label="AGS sello">
+          <defs><linearGradient id="g1" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#16294a"/><stop offset="1" stop-color="#0a1424"/></linearGradient>
+          <linearGradient id="gold1" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#f0d790"/><stop offset="1" stop-color="#c08f2a"/></linearGradient></defs>
+          <rect x="8" y="8" width="184" height="184" rx="44" fill="url(#g1)" stroke="#c9a24a" stroke-opacity=".55" stroke-width="2"/>
+          <rect x="22" y="22" width="156" height="156" rx="34" fill="none" stroke="#c9a24a" stroke-opacity=".25"/>
+          <text x="100" y="118" text-anchor="middle" font-family="Fraunces,serif" font-weight="600" font-size="74" fill="url(#gold1)" letter-spacing="2">AGS</text>
+          <rect x="74" y="138" width="52" height="3" rx="1.5" fill="#c9a24a"/>
+        </svg>
+      </div>
+      <div class="pane light">
+        <svg width="120" height="120" viewBox="0 0 200 200">
+          <rect x="8" y="8" width="184" height="184" rx="44" fill="#0a1424"/>
+          <rect x="22" y="22" width="156" height="156" rx="34" fill="none" stroke="#c9a24a" stroke-opacity=".3"/>
+          <text x="100" y="118" text-anchor="middle" font-family="Fraunces,serif" font-weight="600" font-size="74" fill="#d8a83e" letter-spacing="2">AGS</text>
+          <rect x="74" y="138" width="52" height="3" rx="1.5" fill="#c9a24a"/>
+        </svg>
+      </div>
+    </div>
+    <div class="row-icons">
+      <svg class="ico" viewBox="0 0 200 200"><rect width="200" height="200" rx="46" fill="#0a1424"/><text x="100" y="128" text-anchor="middle" font-family="Fraunces,serif" font-weight="600" font-size="86" fill="#d8a83e">AGS</text></svg>
+      <svg class="ico-sm" viewBox="0 0 200 200"><rect width="200" height="200" rx="46" fill="#0a1424"/><text x="100" y="130" text-anchor="middle" font-family="Fraunces,serif" font-weight="600" font-size="90" fill="#d8a83e">AGS</text></svg>
+      <span class="tag">ícono 46 / 26 px</span>
+    </div>
+  </div>
+
+  <!-- 2. Monograma minimal -->
+  <div class="card">
+    <h3>2 · Monograma minimal</h3>
+    <div class="desc">Solo "AGS" en serif fino con degradado oro. Limpio, sin contenedor.</div>
+    <div class="show">
+      <div class="pane dark">
+        <svg width="200" height="90" viewBox="0 0 260 110">
+          <defs><linearGradient id="gold2" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#f2dc97"/><stop offset="1" stop-color="#bd8c2c"/></linearGradient></defs>
+          <text x="130" y="76" text-anchor="middle" font-family="Fraunces,serif" font-weight="600" font-size="76" fill="url(#gold2)" letter-spacing="4">AGS</text>
+        </svg>
+      </div>
+      <div class="pane light">
+        <svg width="200" height="90" viewBox="0 0 260 110">
+          <text x="130" y="76" text-anchor="middle" font-family="Fraunces,serif" font-weight="600" font-size="76" fill="#1a2942" letter-spacing="4">AGS</text>
+        </svg>
+      </div>
+    </div>
+    <div class="row-icons">
+      <svg class="ico" viewBox="0 0 200 200"><circle cx="100" cy="100" r="96" fill="#0a1424"/><text x="100" y="130" text-anchor="middle" font-family="Fraunces,serif" font-weight="600" font-size="84" fill="#d8a83e">AGS</text></svg>
+      <span class="tag">versátil, escala perfecta</span>
+    </div>
+  </div>
+
+  <!-- 3. Wordmark con barra -->
+  <div class="card">
+    <h3>3 · Wordmark corporativo</h3>
+    <div class="desc">"AGS" sans fuerte + barra oro + nombre completo. Muy institucional.</div>
+    <div class="show">
+      <div class="pane dark">
+        <svg width="230" height="100" viewBox="0 0 300 130">
+          <text x="150" y="66" text-anchor="middle" font-family="Plus Jakarta Sans,sans-serif" font-weight="800" font-size="58" fill="#e8c16a" letter-spacing="1">AGS</text>
+          <rect x="70" y="80" width="160" height="2.5" fill="#c9a24a"/>
+          <text x="150" y="104" text-anchor="middle" font-family="Plus Jakarta Sans,sans-serif" font-weight="600" font-size="13" fill="#9fb0cc" letter-spacing="4">ACADEMIC GLOBAL SOLUTIONS</text>
+        </svg>
+      </div>
+      <div class="pane light">
+        <svg width="230" height="100" viewBox="0 0 300 130">
+          <text x="150" y="66" text-anchor="middle" font-family="Plus Jakarta Sans,sans-serif" font-weight="800" font-size="58" fill="#13243f" letter-spacing="1">AGS</text>
+          <rect x="70" y="80" width="160" height="2.5" fill="#c9a24a"/>
+          <text x="150" y="104" text-anchor="middle" font-family="Plus Jakarta Sans,sans-serif" font-weight="600" font-size="13" fill="#5b6b86" letter-spacing="4">ACADEMIC GLOBAL SOLUTIONS</text>
+        </svg>
+      </div>
+    </div>
+    <div class="row-icons">
+      <svg class="ico" viewBox="0 0 200 200"><rect width="200" height="200" rx="40" fill="#0a1424"/><text x="100" y="124" text-anchor="middle" font-family="Plus Jakarta Sans,sans-serif" font-weight="800" font-size="74" fill="#e8c16a">AGS</text></svg>
+      <span class="tag">ideal para encabezados</span>
+    </div>
+  </div>
+
+  <!-- 4. Órbita global -->
+  <div class="card">
+    <h3>4 · Órbita global</h3>
+    <div class="desc">"AGS" con un arco/órbita oro que sugiere alcance global.</div>
+    <div class="show">
+      <div class="pane dark">
+        <svg width="150" height="120" viewBox="0 0 200 170">
+          <ellipse cx="100" cy="92" rx="78" ry="30" fill="none" stroke="#c9a24a" stroke-width="2.5" transform="rotate(-18 100 92)"/>
+          <circle cx="168" cy="64" r="5" fill="#e8c16a"/>
+          <text x="100" y="112" text-anchor="middle" font-family="Fraunces,serif" font-weight="600" font-size="58" fill="#e8c16a" letter-spacing="1">AGS</text>
+        </svg>
+      </div>
+      <div class="pane light">
+        <svg width="150" height="120" viewBox="0 0 200 170">
+          <ellipse cx="100" cy="92" rx="78" ry="30" fill="none" stroke="#c9a24a" stroke-width="2.5" transform="rotate(-18 100 92)"/>
+          <circle cx="168" cy="64" r="5" fill="#c9a24a"/>
+          <text x="100" y="112" text-anchor="middle" font-family="Fraunces,serif" font-weight="600" font-size="58" fill="#13243f" letter-spacing="1">AGS</text>
+        </svg>
+      </div>
+    </div>
+    <div class="row-icons">
+      <svg class="ico" viewBox="0 0 200 200"><rect width="200" height="200" rx="44" fill="#0a1424"/><ellipse cx="100" cy="108" rx="74" ry="26" fill="none" stroke="#c9a24a" stroke-width="4" transform="rotate(-18 100 108)"/><text x="100" y="120" text-anchor="middle" font-family="Fraunces,serif" font-weight="600" font-size="58" fill="#e8c16a">AGS</text></svg>
+      <span class="tag">con símbolo</span>
+    </div>
+  </div>
+
+  <!-- 5. Emblema circular -->
+  <div class="card">
+    <h3>5 · Emblema / sello circular</h3>
+    <div class="desc">Sello clásico con el nombre alrededor. Aire académico/serio.</div>
+    <div class="show">
+      <div class="pane dark">
+        <svg width="130" height="130" viewBox="0 0 200 200">
+          <defs><path id="circ" d="M100,100 m-72,0 a72,72 0 1,1 144,0 a72,72 0 1,1 -144,0"/></defs>
+          <circle cx="100" cy="100" r="88" fill="none" stroke="#c9a24a" stroke-opacity=".35"/>
+          <circle cx="100" cy="100" r="78" fill="none" stroke="#c9a24a" stroke-width="2"/>
+          <text font-family="Plus Jakarta Sans,sans-serif" font-weight="700" font-size="13.5" fill="#c9a24a" letter-spacing="3"><textPath href="#circ" startOffset="50%" text-anchor="middle">ACADEMIC · GLOBAL · SOLUTIONS</textPath></text>
+          <text x="100" y="118" text-anchor="middle" font-family="Fraunces,serif" font-weight="600" font-size="54" fill="#e8c16a">AGS</text>
+        </svg>
+      </div>
+      <div class="pane light">
+        <svg width="130" height="130" viewBox="0 0 200 200">
+          <defs><path id="circ2" d="M100,100 m-72,0 a72,72 0 1,1 144,0 a72,72 0 1,1 -144,0"/></defs>
+          <circle cx="100" cy="100" r="88" fill="none" stroke="#13243f" stroke-opacity=".25"/>
+          <circle cx="100" cy="100" r="78" fill="none" stroke="#c9a24a" stroke-width="2"/>
+          <text font-family="Plus Jakarta Sans,sans-serif" font-weight="700" font-size="13.5" fill="#a07a22" letter-spacing="3"><textPath href="#circ2" startOffset="50%" text-anchor="middle">ACADEMIC · GLOBAL · SOLUTIONS</textPath></text>
+          <text x="100" y="118" text-anchor="middle" font-family="Fraunces,serif" font-weight="600" font-size="54" fill="#13243f">AGS</text>
+        </svg>
+      </div>
+    </div>
+    <div class="row-icons"><span class="tag">elegante, mejor en tamaños medianos/grandes</span></div>
+  </div>
+
+  <!-- 6. Placa hexagonal -->
+  <div class="card">
+    <h3>6 · Placa (escudo)</h3>
+    <div class="desc">"AGS" en escudo con borde oro. Tono tecnológico-institucional.</div>
+    <div class="show">
+      <div class="pane dark">
+        <svg width="120" height="130" viewBox="0 0 180 200">
+          <path d="M90 12 L160 44 V104 C160 150 128 176 90 190 C52 176 20 150 20 104 V44 Z" fill="#10203a" stroke="#c9a24a" stroke-width="2.5"/>
+          <text x="90" y="116" text-anchor="middle" font-family="Fraunces,serif" font-weight="600" font-size="52" fill="#e8c16a" letter-spacing="1">AGS</text>
+        </svg>
+      </div>
+      <div class="pane light">
+        <svg width="120" height="130" viewBox="0 0 180 200">
+          <path d="M90 12 L160 44 V104 C160 150 128 176 90 190 C52 176 20 150 20 104 V44 Z" fill="#10203a" stroke="#c9a24a" stroke-width="2.5"/>
+          <text x="90" y="116" text-anchor="middle" font-family="Fraunces,serif" font-weight="600" font-size="52" fill="#e8c16a" letter-spacing="1">AGS</text>
+        </svg>
+      </div>
+    </div>
+    <div class="row-icons">
+      <svg class="ico" viewBox="0 0 180 200"><path d="M90 8 L164 42 V104 C164 152 130 180 90 194 C50 180 16 152 16 104 V42 Z" fill="#10203a" stroke="#c9a24a" stroke-width="5"/><text x="90" y="122" text-anchor="middle" font-family="Fraunces,serif" font-weight="600" font-size="58" fill="#e8c16a">AGS</text></svg>
+      <span class="tag">con escudo</span>
+    </div>
+  </div>
+
+</div>
+
+<footer>Elige una opción (o combina: ej. "ícono = opción 1, encabezado = opción 3"). Luego la finalizo y la pongo en navbar, footer y favicon. Si prefieres variantes con IA, paso la key de Gemini o uso Canva.</footer>
+</body>
+</html>
