@@ -34,3 +34,10 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# Artefactos de desarrollo (no van al repo publico)
+/scripts/
+/logo-gemini/
+/logo-gemini-v2/
+/logo-concepts/
+/maquetas/

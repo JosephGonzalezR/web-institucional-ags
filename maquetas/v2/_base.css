@@ -1,6 +1,0 @@
-/* Referencia de tokens compartidos (documentacion; cada maqueta los inlinea) */
-:root{
- --marfil:#F2EFE2; --paper:#F7F4EC; --navy:#0B1B33; --navy2:#122845;
- --muted:#37455C; --gold:#B8863B; --gold-dark:#9A6E2E; --line:rgba(11,27,51,.12);
- --serif:'Fraunces',Georgia,serif; --sans:'Inter',system-ui,sans-serif;
-}

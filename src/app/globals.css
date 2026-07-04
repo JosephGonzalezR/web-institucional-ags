@@ -43,7 +43,7 @@
 
   /* Epigrafe editorial: versalitas, tracking amplio, dorado legible. */
   .eyebrow {
-    @apply text-xs font-semibold uppercase tracking-eyebrow text-gold-dark;
+    @apply text-[13px] font-semibold uppercase tracking-eyebrow text-gold-dark sm:text-sm;
   }
 
   /* Enlace-CTA editorial (no boton relleno). */
