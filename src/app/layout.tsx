@@ -73,7 +73,18 @@ export const metadata: Metadata = {
     follow: true,
     googleBot: { index: true, follow: true, "max-image-preview": "large" },
   },
-  icons: { icon: "/favicon.ico" },
+  icons: {
+    icon: [
+      { url: "/favicon.ico", sizes: "any" },
+      { url: "/icon-192.png", type: "image/png", sizes: "192x192" },
+      { url: "/icon-512.png", type: "image/png", sizes: "512x512" },
+    ],
+    apple: "/apple-touch-icon-180.png",
+  },
+};
+
+export const viewport = {
+  themeColor: "#F2EFE2",
 };
 
 export default function RootLayout({

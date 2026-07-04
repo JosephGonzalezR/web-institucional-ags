@@ -14,7 +14,7 @@ export function LangSwitch({ className }: { className?: string }) {
   return (
     <div
       className={cn(
-        "inline-flex items-center rounded-full border border-line bg-white/5 p-0.5",
+        "inline-flex items-center border border-line p-0.5",
         className,
       )}
       role="group"
@@ -27,10 +27,10 @@ export function LangSwitch({ className }: { className?: string }) {
           onClick={() => setLang(l.code)}
           aria-pressed={lang === l.code}
           className={cn(
-            "rounded-full px-2.5 py-1 text-xs font-semibold transition-colors",
+            "px-2.5 py-1 text-xs font-semibold tracking-wide transition-colors",
             lang === l.code
-              ? "bg-accent-500 text-white"
-              : "text-slate-300 hover:text-white",
+              ? "bg-ink text-marfil"
+              : "text-muted hover:text-ink",
           )}
         >
           {l.label}

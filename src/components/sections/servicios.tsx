@@ -2,7 +2,6 @@
 
 import { SERVICIO_ORDEN } from "@/config/site";
 import { SectionHeader } from "@/components/section-header";
-import { SERVICIO_ICONS } from "@/components/icons";
 import { useLang } from "@/i18n/provider";
 import { Reveal } from "@/components/reveal";
 
@@ -10,28 +9,28 @@ export function Servicios() {
   const { t } = useLang();
 
   return (
-    <section id="servicios" className="border-b border-line py-20 sm:py-28">
+    <section id="servicios" className="border-b border-line py-[clamp(72px,9vw,148px)]">
       <div className="container-pad">
         <SectionHeader
           eyebrow={t.servicios.eyebrow}
+          numero="04"
           titulo={t.servicios.titulo}
           descripcion={t.servicios.descripcion}
         />
 
-        <div className="mt-14 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="mt-14 border-t border-line">
           {SERVICIO_ORDEN.map((id, i) => {
-            const Icono = SERVICIO_ICONS[id];
             const item = t.servicios.items[id];
             return (
-              <Reveal key={id} delay={i * 70}>
-                <div className="group h-full rounded-2xl border border-line bg-panel p-6 transition-all duration-300 hover:-translate-y-1 hover:border-brand-400/40 hover:shadow-lift">
-                  <span className="inline-flex h-11 w-11 items-center justify-center rounded-xl border border-line bg-white/5 text-brand-300 transition-colors group-hover:border-brand-400/50 group-hover:bg-brand-400/10">
-                    <Icono className="h-5 w-5" />
+              <Reveal key={id} delay={(i % 2) * 70}>
+                <div className="group grid grid-cols-1 gap-x-6 gap-y-3 border-b border-line py-8 transition-colors hover:bg-ink/[0.015] md:grid-cols-12 md:items-baseline">
+                  <span className="font-display text-lg text-gold md:col-span-1">
+                    {String(i + 1).padStart(2, "0")}
                   </span>
-                  <h3 className="mt-5 text-base font-semibold text-white">
+                  <h3 className="font-display text-[clamp(22px,2.4vw,28px)] tracking-tight text-ink md:col-span-5">
                     {item.titulo}
                   </h3>
-                  <p className="mt-2 text-sm leading-relaxed text-slate-400">
+                  <p className="max-w-prose text-[15px] leading-relaxed text-muted md:col-span-6">
                     {item.descripcion}
                   </p>
                 </div>

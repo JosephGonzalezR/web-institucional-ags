@@ -3,6 +3,7 @@ import { Reveal } from "@/components/reveal";
 
 interface Props {
   eyebrow?: string;
+  numero?: string; // "01", "02"... ancla editorial
   titulo: string;
   descripcion?: string;
   className?: string;
@@ -11,30 +12,32 @@ interface Props {
 
 export function SectionHeader({
   eyebrow,
+  numero,
   titulo,
   descripcion,
   className,
-  align = "center",
+  align = "left",
 }: Props) {
   return (
     <Reveal
       className={cn(
-        "max-w-2xl",
+        "max-w-3xl",
         align === "center" ? "mx-auto text-center" : "text-left",
         className,
       )}
     >
       {eyebrow ? (
-        <p className="mb-3 inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.24em] text-brand-300">
-          <span aria-hidden="true" className="h-px w-6 bg-brand-400/60" />
+        <p className="eyebrow mb-5">
+          {numero ? <span className="text-gold">{numero}</span> : null}
+          {numero ? <span className="mx-2 text-gold/50">/</span> : null}
           {eyebrow}
         </p>
       ) : null}
-      <h2 className="font-display text-3xl font-medium tracking-tight text-white sm:text-[2.6rem] sm:leading-[1.1]">
+      <h2 className="display-tight text-[clamp(30px,3.6vw,44px)] leading-[1.08] text-ink">
         {titulo}
       </h2>
       {descripcion ? (
-        <p className="mt-4 text-base leading-relaxed text-slate-400">
+        <p className="mt-5 max-w-prose text-[17px] leading-relaxed text-muted">
           {descripcion}
         </p>
       ) : null}

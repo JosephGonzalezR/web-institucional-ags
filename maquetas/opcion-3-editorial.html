@@ -1,0 +1,73 @@
+<!doctype html><html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>AGS · Opción 3 — Editorial Split</title>
+<style>
+:root{--navy:#0B1B33;--navy2:#102340;--marfil:#F2EFE2;--paper:#FBFAF6;--ink:#1B2740;--muted:#5C6472;--gold:#B8863B;--gold2:#CFA24A;--line:#E4DFD1;--lineD:rgba(216,178,94,.18)}
+*{box-sizing:border-box;margin:0}html{scroll-behavior:smooth}
+body{background:var(--marfil);color:var(--ink);font:16px/1.6 -apple-system,"Segoe UI",Roboto,Arial,sans-serif}
+.badge{position:fixed;top:14px;left:14px;z-index:30;background:var(--gold);color:#241a05;font:700 11px/1 Segoe UI;letter-spacing:1px;padding:8px 12px;border-radius:20px}
+.serif{font-family:Georgia,"Times New Roman",serif}
+/* top nav ghost over split */
+nav{position:absolute;top:0;left:0;right:0;z-index:20;height:78px;display:flex;align-items:center}
+.nav{max-width:1220px;margin:0 auto;padding:0 34px;width:100%;display:flex;justify-content:space-between;align-items:center}
+.nav .l{display:flex;gap:26px}.nav a{color:#EAE3D2;text-decoration:none;font-size:14px}.nav a:hover{color:var(--gold2)}
+.lang{border:1px solid var(--lineD);border-radius:20px;padding:5px 12px;font-size:12px;color:var(--gold2)}
+/* SPLIT HERO */
+.split{display:grid;grid-template-columns:1.02fr .98fr;min-height:640px}
+.left{background:var(--navy);color:#E7ECF4;padding:120px 60px 60px;position:relative;
+ background-image:radial-gradient(70% 50% at 20% 0%,rgba(216,178,94,.14),transparent 60%)}
+.left .eyebrow{color:var(--gold2);font:600 12px Segoe UI;letter-spacing:4px;text-transform:uppercase;margin-bottom:26px}
+.left h1{font-family:Georgia,serif;font-size:52px;line-height:1.1;color:#fff;font-weight:600}
+.left h1 em{font-style:italic;color:var(--gold2)}
+.left p{color:#A9B4C7;margin:24px 0 32px;max-width:440px}
+.left .cta{display:flex;gap:14px}
+.btn{padding:13px 24px;border-radius:9px;font-weight:600;font-size:14px;text-decoration:none}
+.btn.p{background:linear-gradient(180deg,#e8c16a,#c9962e);color:#241a05}
+.btn.g{border:1px solid var(--gold2);color:var(--gold2)}
+.logo-mini{position:absolute;top:64px;left:60px;height:46px}
+.right{background:var(--paper);padding:118px 56px 56px;display:flex;flex-direction:column;justify-content:center}
+.right .kicker{color:var(--gold);font:600 12px Segoe UI;letter-spacing:3px;text-transform:uppercase}
+.right h2{font-family:Georgia,serif;font-size:28px;color:var(--navy);margin:8px 0 26px}
+.row{display:flex;align-items:center;justify-content:space-between;padding:20px 0;border-top:1px solid var(--line)}
+.row:last-child{border-bottom:1px solid var(--line)}
+.row .n{display:flex;align-items:center;gap:14px}
+.row .fl{font-size:22px}.row h3{font-family:Georgia,serif;font-size:20px;color:var(--navy)}.row .co{color:var(--muted);font-size:12.5px}
+.row .num{font-family:Georgia,serif;font-size:22px;color:var(--gold)}
+/* STATS band */
+.band{background:var(--navy);color:#E7ECF4;padding:34px 0}
+.band .in{max-width:1120px;margin:0 auto;padding:0 34px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:24px}
+.band .u{display:flex;flex-direction:column;gap:2px}.band b{font-family:Georgia,serif;font-size:30px;color:var(--gold2)}.band span{color:#93a0b8;font-size:12px;letter-spacing:1px}
+footer{background:var(--marfil);color:var(--muted);text-align:center;padding:34px;font-size:13px}
+@media(max-width:900px){.split{grid-template-columns:1fr}.left,.right{padding:96px 30px 44px}.left h1{font-size:38px}.nav .l{display:none}}
+</style></head><body>
+<div class="badge">OPCIÓN 3 · EDITORIAL SPLIT</div>
+<nav><div class="nav">
+  <span style="color:#EAE3D2;font:700 15px Georgia,serif;letter-spacing:2px">AGS</span>
+  <div class="l"><a>Nosotros</a><a>Presencia</a><a>Marcas</a><a>Contacto</a><span class="lang">ES / EN</span></div>
+</div></nav>
+
+<section class="split">
+  <div class="left">
+    <img class="logo-mini" src="file:///E:/web-institucional-ags/logo-gemini-v2/colores/11_navy_oro_DARK.png" alt="AGS">
+    <div class="eyebrow">Perú · Chile · Argentina</div>
+    <h1>Una red académica con <em>presencia real</em> en Latinoamérica.</h1>
+    <p>Academic Global Solutions respalda a tres marcas líderes de asesoría académica, con comunidades verificadas y operación en tres países.</p>
+    <div class="cta"><a class="btn p">Conocer AGS</a><a class="btn g">Ver presencia</a></div>
+  </div>
+  <div class="right">
+    <div class="kicker">Nuestras marcas</div>
+    <h2 class="serif">Tres países, una sola visión</h2>
+    <div class="row"><div class="n"><span class="fl">🇵🇪</span><div><h3>EducaProject</h3><div class="co">Lima, Perú</div></div></div><div class="num">22.107</div></div>
+    <div class="row"><div class="n"><span class="fl">🇨🇱</span><div><h3>Tareapp</h3><div class="co">Santiago, Chile</div></div></div><div class="num">21.033</div></div>
+    <div class="row"><div class="n"><span class="fl">🇦🇷</span><div><h3>Trabajos Helper</h3><div class="co">Buenos Aires, Argentina</div></div></div><div class="num">5.256</div></div>
+  </div>
+</section>
+
+<div class="band"><div class="in">
+  <div class="u"><b>+48.000</b><span>SEGUIDORES</span></div>
+  <div class="u"><b>9</b><span>CANALES DIGITALES</span></div>
+  <div class="u"><b>3</b><span>PAÍSES</span></div>
+  <div class="u"><b>3</b><span>MARCAS</span></div>
+  <div class="u"><b>100%</b><span>PRESENCIA VERIFICADA</span></div>
+</div></div>
+<footer>© 2026 Academic Global Solutions · Perú · Chile · Argentina</footer>
+</body></html>

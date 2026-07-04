@@ -3,9 +3,9 @@ import { SA_COUNTRIES, SA_MARKERS, SA_VIEWBOX } from "@/config/sa-geo";
 import { PAISES } from "@/config/paises";
 
 /**
- * Mapa de Sudamerica (GeoJSON de alta resolucion) con Peru, Chile y Argentina
- * resaltados. Fronteras marcadas; una banderita marca cada pais sobre el mapa y
- * una flecha sale hacia su marca. Estetica sobria / ejecutiva.
+ * Mapa de Sudamerica con Peru, Chile y Argentina resaltados en dorado.
+ * Estetica editorial clara: continente en tono papel, paises en oro, un punto
+ * dorado marca cada uno y una linea fina sale hacia su marca. Sin banderitas.
  */
 
 const [, , MAP_W, MAP_H] = SA_VIEWBOX.split(" ").map(Number);
@@ -46,8 +46,8 @@ export function SouthAmericaMap({ className }: { className?: string }) {
         >
           <defs>
             <linearGradient id="ags-hl" x1="0" y1="0" x2="0" y2="1">
-              <stop offset="0%" stopColor="#caa451" />
-              <stop offset="100%" stopColor="#9a7528" />
+              <stop offset="0%" stopColor="#C9A24A" />
+              <stop offset="100%" stopColor="#9A6E2E" />
             </linearGradient>
             <marker
               id="ags-arrow"
@@ -58,36 +58,35 @@ export function SouthAmericaMap({ className }: { className?: string }) {
               markerHeight="6"
               orient="auto"
             >
-              <path d="M0,0 L10,5 L0,10 z" fill="#c9a24a" />
+              <path d="M0,0 L10,5 L0,10 z" fill="#B8863B" />
             </marker>
           </defs>
 
-          {/* Continente de contexto con FRONTERAS marcadas. */}
+          {/* Continente de contexto (tono papel, borde navy fino). */}
           {SA_COUNTRIES.filter((c) => !c.hl).map((c) => (
             <path
               key={c.iso}
               d={c.d}
-              fill="#0e1f37"
-              stroke="rgba(190,210,236,0.38)"
-              strokeWidth={1.6}
+              fill="#E7E1D1"
+              stroke="rgba(11,27,51,0.22)"
+              strokeWidth={1.4}
               strokeLinejoin="round"
             />
           ))}
 
-          {/* Paises resaltados (oro contenido, borde claro). */}
+          {/* Paises resaltados (oro, borde navy). */}
           {SA_COUNTRIES.filter((c) => c.hl).map((c) => (
             <path
               key={c.iso}
               d={c.d}
               fill="url(#ags-hl)"
-              fillOpacity={0.95}
-              stroke="#f6ecd2"
-              strokeWidth={1.8}
+              stroke="#0B1B33"
+              strokeWidth={1.4}
               strokeLinejoin="round"
             />
           ))}
 
-          {/* Flechas guia horizontales hacia cada etiqueta. */}
+          {/* Lineas guia hacia cada etiqueta. */}
           {SA_MARKERS.map((m) => {
             const c = CALLOUT[m.iso];
             if (!c) return null;
@@ -98,51 +97,49 @@ export function SouthAmericaMap({ className }: { className?: string }) {
                 y1={m.y}
                 x2={c.ax}
                 y2={m.y}
-                stroke="#c9a24a"
-                strokeWidth={3.4}
-                opacity={0.85}
+                stroke="#B8863B"
+                strokeWidth={2.6}
+                opacity={0.9}
                 markerEnd="url(#ags-arrow)"
               />
             );
           })}
 
-          {/* Anillo pulsante detras de cada banderita. */}
+          {/* Anillo pulsante detras de cada punto. */}
           {SA_MARKERS.map((m, i) => (
             <circle
               key={`ring-${m.iso}`}
               cx={m.x}
               cy={m.y}
-              r={13}
+              r={12}
               fill="none"
-              stroke="rgba(201,162,74,0.6)"
-              strokeWidth={2.5}
+              stroke="rgba(184,134,59,0.5)"
+              strokeWidth={2}
               className="origin-center animate-pulse-ring [transform-box:fill-box]"
               style={{ animationDelay: `${i * 0.7}s` }}
             />
           ))}
         </svg>
 
-        {/* Banderitas sobre el mapa (marcan cada pais). */}
+        {/* Punto dorado sobre cada pais. */}
         {SA_MARKERS.map((m) => {
           const pais = POR_ISO[m.iso];
           if (!pais) return null;
           return (
             <div
-              key={`flag-${m.iso}`}
+              key={`dot-${m.iso}`}
               className="absolute -translate-x-1/2 -translate-y-1/2"
               style={{
                 left: `${pct(m.x, VB_X, VB_W)}%`,
                 top: `${pct(m.y, VB_Y, VB_H)}%`,
               }}
             >
-              <span className="flex h-7 w-7 items-center justify-center rounded-full border border-white/30 bg-ink/85 text-[15px] leading-none shadow-[0_4px_12px_rgba(0,0,0,0.55)] backdrop-blur">
-                {pais.bandera}
-              </span>
+              <span className="block h-3 w-3 rounded-full border-2 border-marfil bg-gold shadow-[0_2px_6px_rgba(11,27,51,0.35)]" />
             </div>
           );
         })}
 
-        {/* Etiquetas de marca (sobrias, sin repetir bandera ni pais). */}
+        {/* Etiquetas de marca (tarjeta clara, sobria). */}
         {SA_MARKERS.map((m) => {
           const pais = POR_ISO[m.iso];
           const c = CALLOUT[m.iso];
@@ -164,14 +161,14 @@ export function SouthAmericaMap({ className }: { className?: string }) {
             >
               <div
                 className={cn(
-                  "rounded-md border border-white/10 bg-[#0b1626]/95 px-3 py-1.5 shadow-[0_10px_26px_-10px_rgba(0,0,0,0.75)] backdrop-blur",
-                  c.side === "izq" ? "mr-1.5 text-right" : "ml-1.5 text-left",
+                  "rounded-sm border border-line bg-paper px-3 py-1.5 shadow-card",
+                  c.side === "izq" ? "mr-2 text-right" : "ml-2 text-left",
                 )}
               >
-                <span className="block whitespace-nowrap text-[13px] font-semibold tracking-tight text-white">
+                <span className="block whitespace-nowrap font-display text-[14px] tracking-tight text-ink">
                   {marcaCorta(pais.marca, pais.pais)}
                 </span>
-                <span className="block text-[11px] font-medium text-slate-400">
+                <span className="block text-[11px] font-medium uppercase tracking-eyebrow text-muted-2">
                   {pais.pais}
                 </span>
               </div>

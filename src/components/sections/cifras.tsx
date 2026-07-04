@@ -1,15 +1,7 @@
 "use client";
 
 import { STATS } from "@/lib/stats";
-import { SectionHeader } from "@/components/section-header";
-import {
-  RED_ICONS,
-  Users,
-  Globe,
-  WhatsApp,
-  MapPin,
-  TrendingUp,
-} from "@/components/icons";
+import { RED_ICONS, Globe, WhatsApp, MapPin, Users } from "@/components/icons";
 import { fmt } from "@/lib/format";
 import { useLang } from "@/i18n/provider";
 import { Reveal } from "@/components/reveal";
@@ -23,10 +15,10 @@ function Bar({ pct }: { pct: number }) {
   return (
     <div
       ref={ref}
-      className="mt-2 h-2 w-full overflow-hidden rounded-full bg-white/5"
+      className="mt-2 h-px w-full overflow-hidden bg-[rgba(242,239,226,0.14)]"
     >
       <div
-        className="h-full rounded-full bg-gradient-to-r from-brand-600 via-brand-400 to-brand-200 transition-[width] duration-1000 ease-out motion-reduce:transition-none"
+        className="h-full bg-gold-light transition-[width] duration-1000 ease-out motion-reduce:transition-none"
         style={{ width: inView ? `${pct}%` : "0%" }}
       />
     </div>
@@ -44,86 +36,86 @@ export function Cifras() {
   ];
 
   return (
-    <section id="cifras" className="border-b border-line py-20 sm:py-28">
-      <div className="container-pad">
-        <SectionHeader
-          eyebrow={t.cifras.eyebrow}
-          titulo={t.cifras.titulo}
-          descripcion={t.cifras.descripcion}
-        />
+    <section id="cifras" className="relative overflow-hidden bg-navy text-marfil">
+      <div
+        aria-hidden="true"
+        className="grid-lines-navy pointer-events-none absolute inset-0 [mask-image:linear-gradient(180deg,transparent,black_15%,black_85%,transparent)]"
+      />
+      <div className="container-pad relative py-[clamp(72px,9vw,148px)]">
+        <Reveal className="max-w-3xl">
+          <p className="eyebrow text-gold-light">
+            <span className="text-gold-light">03</span>
+            <span className="mx-2 text-gold-light/50">/</span>
+            {t.cifras.eyebrow}
+          </p>
+          <h2 className="display-tight mt-5 text-[clamp(30px,3.6vw,44px)] text-marfil">
+            {t.cifras.titulo}
+          </h2>
+          <p className="mt-5 max-w-prose text-[17px] leading-relaxed text-[rgba(242,239,226,0.62)]">
+            {t.cifras.descripcion}
+          </p>
+        </Reveal>
 
-        <div className="mt-14 grid gap-6 lg:grid-cols-[1fr_1.3fr]">
-          <Reveal className="flex">
-            <div className="relative flex w-full flex-col justify-between overflow-hidden rounded-2xl border border-line bg-gradient-to-b from-panel-2 to-panel p-8 shadow-panel">
-              <div
-                aria-hidden="true"
-                className="pointer-events-none absolute -right-16 -top-16 h-56 w-56 rounded-full bg-[radial-gradient(closest-side,rgba(220,167,61,0.22),transparent)] blur-xl"
-              />
-              <div className="inline-flex items-center gap-2 self-start rounded-full border border-line bg-white/5 px-3 py-1 text-xs font-medium text-brand-200">
-                <TrendingUp className="h-4 w-4" />
-                {t.cifras.comunidadTotal}
-              </div>
-              <div className="mt-8">
-                <div className="font-mono text-6xl font-semibold tracking-tight text-white sm:text-7xl">
-                  <AnimatedNumber value={STATS.seguidoresConfirmados} format={fmt} />
-                </div>
-                <p className="mt-3 text-sm text-slate-400">{t.cifras.totalSub}</p>
-              </div>
-              <div className="mt-8 h-px w-full bg-gradient-to-r from-brand-400/40 to-transparent" />
+        <div className="mt-16 grid gap-x-16 gap-y-12 lg:grid-cols-[0.9fr_1.1fr]">
+          {/* Comunidad total */}
+          <Reveal>
+            <p className="eyebrow text-gold-light">{t.cifras.comunidadTotal}</p>
+            <div className="mt-6 font-display text-[clamp(56px,7vw,92px)] leading-none tracking-tightest text-gold-light">
+              <AnimatedNumber value={STATS.seguidoresConfirmados} format={fmt} />
             </div>
+            <p className="mt-5 max-w-sm text-[15px] leading-relaxed text-[rgba(242,239,226,0.55)]">
+              {t.cifras.totalSub}
+            </p>
+            <span aria-hidden="true" className="mt-8 block h-px w-14 bg-gold" />
           </Reveal>
 
+          {/* Por red */}
           <Reveal delay={100}>
-            <div className="rounded-2xl border border-line bg-panel p-8 shadow-panel">
-              <h3 className="text-sm font-semibold uppercase tracking-wider text-slate-400">
-                {t.cifras.porRedTitulo}
-              </h3>
-              <ul className="mt-6 space-y-6">
-                {STATS.porRed.map((r) => {
-                  const Icono = RED_ICONS[r.red];
-                  const pct = Math.max(4, Math.round((r.seguidores / maxRed) * 100));
-                  return (
-                    <li key={r.red}>
-                      <div className="flex items-center justify-between">
-                        <span className="inline-flex items-center gap-2.5 text-sm font-medium text-white">
-                          <Icono className="h-[18px] w-[18px] text-brand-300" />
-                          {t.redes[r.red]}
-                        </span>
-                        <span className="font-mono text-sm text-white">
-                          <AnimatedNumber value={r.seguidores} format={fmt} />
-                        </span>
-                      </div>
-                      <Bar pct={pct} />
-                      <p className="mt-1.5 text-xs text-slate-500">
-                        {r.cuentasConfirmadas} {t.cifras.cuentas}
-                      </p>
-                    </li>
-                  );
-                })}
-              </ul>
-            </div>
+            <h3 className="eyebrow text-[rgba(242,239,226,0.6)]">
+              {t.cifras.porRedTitulo}
+            </h3>
+            <ul className="mt-7 space-y-7">
+              {STATS.porRed.map((r) => {
+                const Icono = RED_ICONS[r.red];
+                const pct = Math.max(4, Math.round((r.seguidores / maxRed) * 100));
+                return (
+                  <li key={r.red}>
+                    <div className="flex items-end justify-between">
+                      <span className="inline-flex items-center gap-2.5 text-[15px] font-medium text-marfil">
+                        <Icono className="h-[18px] w-[18px] text-gold-light" />
+                        {t.redes[r.red]}
+                      </span>
+                      <span className="font-display text-xl text-marfil">
+                        <AnimatedNumber value={r.seguidores} format={fmt} />
+                      </span>
+                    </div>
+                    <Bar pct={pct} />
+                    <p className="mt-2 text-xs text-[rgba(242,239,226,0.45)]">
+                      {r.cuentasConfirmadas} {t.cifras.cuentas}
+                    </p>
+                  </li>
+                );
+              })}
+            </ul>
           </Reveal>
         </div>
 
-        <div className="mt-6 grid grid-cols-2 gap-6 lg:grid-cols-4">
-          {tarjetas.map((tj, i) => {
-            const Icono = tj.icono;
-            return (
-              <Reveal key={tj.etiqueta} delay={i * 80}>
-                <div className="group rounded-2xl border border-line bg-panel p-6 shadow-panel transition-all duration-300 hover:-translate-y-1 hover:shadow-lift">
-                  <span className="inline-flex h-10 w-10 items-center justify-center rounded-lg border border-line bg-white/5 text-brand-300 transition-colors group-hover:border-brand-400/50">
-                    <Icono className="h-5 w-5" />
-                  </span>
-                  <div className="mt-4 font-mono text-3xl font-semibold text-white">
-                    <AnimatedNumber value={tj.valor} />
-                  </div>
-                  <div className="mt-1 text-xs uppercase tracking-wide text-slate-400">
-                    {tj.etiqueta}
-                  </div>
-                </div>
-              </Reveal>
-            );
-          })}
+        {/* Fila de indicadores, separados por hairline. */}
+        <div className="mt-16 grid grid-cols-2 border-t border-line-navy pt-10 sm:grid-cols-4">
+          {tarjetas.map((tj, i) => (
+            <Reveal
+              key={tj.etiqueta}
+              delay={i * 70}
+              className={i > 0 ? "sm:border-l sm:border-line-navy sm:pl-8" : ""}
+            >
+              <div className="font-display text-[clamp(36px,4vw,56px)] leading-none tracking-tightest text-gold-light">
+                <AnimatedNumber value={tj.valor} />
+              </div>
+              <div className="mt-3 text-xs uppercase tracking-eyebrow text-[rgba(242,239,226,0.55)]">
+                {tj.etiqueta}
+              </div>
+            </Reveal>
+          ))}
         </div>
       </div>
     </section>

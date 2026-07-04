@@ -1,0 +1,124 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>AGS · Globo terráqueo — 10 variaciones</title>
+<style>
+  :root{ --navy:#0B1B33; --gold:#C9A24A; }
+  *{box-sizing:border-box}
+  body{margin:0;background:#0e1116;color:#e8ecf2;font:15px/1.5 -apple-system,Segoe UI,Roboto,Arial,sans-serif}
+  header{padding:34px 28px 10px}
+  h1{font:600 24px/1.2 Georgia,serif;margin:0 0 6px}
+  .sub{color:#9aa6b6;max-width:820px}
+  .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(360px,1fr));gap:20px;padding:24px 28px 60px}
+  .card{background:#161b22;border:1px solid #232a34;border-radius:14px;overflow:hidden}
+  .card h3{margin:0;padding:14px 16px 4px;font:600 14px/1.3 Segoe UI,Arial;letter-spacing:.4px;color:#dfe6ef}
+  .card p{margin:0;padding:0 16px 12px;color:#8f9bab;font-size:12.5px}
+  .tiles{display:grid;grid-template-columns:1fr 1fr}
+  .tile{display:flex;align-items:center;justify-content:center;min-height:150px;padding:18px}
+  .navy{background:linear-gradient(160deg,#0d2242,#081120)}
+  .light{background:#f4f1ea}
+  .tag{display:inline-block;font-size:11px;color:#6f7a8a;padding:0 16px 14px}
+  svg{max-width:100%;height:auto}
+</style>
+</head>
+<body>
+<header>
+  <h1>AGS · Globo terráqueo — 10 variaciones creativas</h1>
+  <div class="sub">Todas con el símbolo del globo + <b>AGS</b> + <b>Academic Global Solutions</b>. De lo académico (birrete, libro) a lo minimal (órbita, red global). Dime el número que más te guste (o dos para fusionar) y lo pulo al detalle + genero el set final (SVG + PNG + favicon) y lo monto en la web.</div>
+</header>
+<div class="grid" id="grid"></div>
+
+<script>
+const NAVY='#0B1B33', GOLD='#C9A24A';
+const gdef=`<defs><linearGradient id="g" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#E7CC82"/><stop offset=".55" stop-color="#C9A24A"/><stop offset="1" stop-color="#A9812F"/></linearGradient></defs>`;
+
+// Globo monolínea reutilizable
+function globo(cx,cy,r,s,w=1.7){
+  return `<g fill="none" stroke="${s}" stroke-width="${w}">
+    <circle cx="${cx}" cy="${cy}" r="${r}"/>
+    <ellipse cx="${cx}" cy="${cy}" rx="${r*0.42}" ry="${r}"/>
+    <line x1="${cx-r}" y1="${cy}" x2="${cx+r}" y2="${cy}"/>
+    <path d="M${cx-r*0.86} ${cy-r*0.5} h${r*1.72} M${cx-r*0.86} ${cy+r*0.5} h${r*1.72}"/></g>`;
+}
+
+const C=[
+ {n:1,t:"Globo + birrete (académico global)",d:"Mortarboard sobre el globo. Dice 'educación' y 'mundo' de un vistazo.",
+  svg:(ink,line)=>`${gdef}<svg viewBox="0 0 320 150">${globo(56,84,30,line)}
+    <g fill="${line}"><path d="M56 34 l34 12 l-34 12 l-34 -12 z"/><path d="M88 47 v13" stroke="${line}" stroke-width="1.6"/><circle cx="88" cy="62" r="2.6"/></g>
+    <text x="104" y="80" font-family="Georgia,serif" font-weight="700" font-size="40" letter-spacing="2" fill="${ink}">AGS</text>
+    <text x="106" y="104" font-family="Segoe UI,Arial" font-size="11" letter-spacing="3.6" fill="${ink}">ACADEMIC GLOBAL SOLUTIONS</text></svg>`},
+
+ {n:2,t:"Globo con órbita dorada",d:"Anillo orbital elíptico cruzando el globo. Alcance internacional, moderno.",
+  svg:(ink,line)=>`${gdef}<svg viewBox="0 0 320 150">${globo(58,75,30,line)}
+    <ellipse cx="58" cy="75" rx="42" ry="15" fill="none" stroke="${line}" stroke-width="1.7" transform="rotate(-24 58 75)"/>
+    <circle cx="94" cy="55" r="3.2" fill="${line}"/>
+    <text x="112" y="72" font-family="Segoe UI,Arial" font-weight="700" font-size="38" letter-spacing="2" fill="${ink}">AGS</text>
+    <text x="113" y="95" font-family="Segoe UI,Arial" font-size="10.5" letter-spacing="3.4" fill="${ink}">ACADEMIC GLOBAL SOLUTIONS</text></svg>`},
+
+ {n:3,t:"Emblema centrado",d:"Globo arriba, AGS serif y nombre debajo. Formato vertical para membrete/sello.",
+  svg:(ink,line)=>`${gdef}<svg viewBox="0 0 320 160"><g transform="translate(130,10)">${globo(30,34,28,line)}</g>
+    <text x="160" y="112" text-anchor="middle" font-family="Georgia,serif" font-weight="700" font-size="38" letter-spacing="3" fill="${ink}">AGS</text>
+    <text x="160" y="134" text-anchor="middle" font-family="Georgia,serif" font-size="12" letter-spacing="2.5" fill="${ink}">ACADEMIC · GLOBAL · SOLUTIONS</text></svg>`},
+
+ {n:4,t:"Sello con globo",d:"Doble anillo, nombre en la orla y globo al centro. Máxima autoridad institucional.",
+  svg:(ink,line)=>`${gdef}<svg viewBox="0 0 320 150"><defs><path id="a4" d="M75 78 m-52 0 a52 52 0 1 1 104 0" fill="none"/></defs>
+    <circle cx="75" cy="78" r="58" fill="none" stroke="${line}" stroke-width="1.5"/><circle cx="75" cy="78" r="49" fill="none" stroke="${line}" stroke-width="1"/>
+    <text font-family="Georgia,serif" font-size="8.5" letter-spacing="3" fill="${ink}"><textPath href="#a4" startOffset="4%">ACADEMIC · GLOBAL · SOLUTIONS ·</textPath></text>
+    ${globo(75,74,24,line)}
+    <text x="152" y="72" font-family="Georgia,serif" font-weight="700" font-size="30" letter-spacing="2" fill="${ink}">AGS</text>
+    <text x="153" y="92" font-family="Georgia,serif" font-size="11" letter-spacing="1.5" fill="${ink}">Academic Global Solutions</text></svg>`},
+
+ {n:5,t:"Globo sobre libro abierto",d:"El mundo apoyado en un libro. Conocimiento + global, muy académico.",
+  svg:(ink,line)=>`${gdef}<svg viewBox="0 0 320 150">${globo(58,66,27,line)}
+    <g fill="none" stroke="${line}" stroke-width="1.7"><path d="M26 100 q32 -12 32 0 q0 -12 32 0"/><path d="M26 100 v9 q32 -12 32 0 v-9 M58 100 v9 q32 -12 32 0 v-9"/></g>
+    <text x="108" y="72" font-family="Georgia,serif" font-weight="700" font-size="38" letter-spacing="2" fill="${ink}">AGS</text>
+    <text x="109" y="95" font-family="Segoe UI,Arial" font-size="10.5" letter-spacing="3.2" fill="${ink}">ACADEMIC GLOBAL SOLUTIONS</text></svg>`},
+
+ {n:6,t:"Red global (nodos)",d:"Globo hecho de puntos y líneas de conexión. Aire tecnológico / consultora.",
+  svg:(ink,line)=>`${gdef}<svg viewBox="0 0 320 150"><g stroke="${line}" stroke-width="1.3" fill="${line}">
+    <circle cx="58" cy="72" r="30" fill="none" stroke-width="1.6"/>
+    <g><circle cx="42" cy="58" r="2.4"/><circle cx="74" cy="55" r="2.4"/><circle cx="80" cy="80" r="2.4"/><circle cx="45" cy="88" r="2.4"/><circle cx="58" cy="72" r="2.4"/></g>
+    <path d="M42 58 L74 55 L80 80 L45 88 L42 58 M42 58 L58 72 L80 80 M74 55 L58 72 L45 88" fill="none" stroke-width="1"/></g>
+    <text x="108" y="72" font-family="Segoe UI,Arial" font-weight="700" font-size="38" letter-spacing="2" fill="${ink}">AGS</text>
+    <text x="109" y="95" font-family="Segoe UI,Arial" font-size="10.5" letter-spacing="3.2" fill="${ink}">ACADEMIC GLOBAL SOLUTIONS</text></svg>`},
+
+ {n:7,t:"Globo en escudo",d:"Blasón sobrio con el mundo dentro. Estudio/colegiatura con proyección global.",
+  svg:(ink,line)=>`${gdef}<svg viewBox="0 0 320 150"><path d="M58 20 h44 v40 q0 30 -44 46 q-44 -16 -44 -46 v-40 z" fill="none" stroke="${line}" stroke-width="1.8" transform="translate(-14,0)"/>
+    ${globo(50,60,22,line)}
+    <text x="112" y="70" font-family="Georgia,serif" font-weight="700" font-size="34" letter-spacing="2" fill="${ink}">AGS</text>
+    <text x="113" y="92" font-family="Georgia,serif" font-size="11" letter-spacing="1.5" fill="${ink}">Academic Global Solutions</text></svg>`},
+
+ {n:8,t:"Globo minimal + apilado",d:"Globo fino a la izquierda, AGS y nombre en dos líneas. Limpio y versátil (web).",
+  svg:(ink,line)=>`${gdef}<svg viewBox="0 0 320 150">${globo(52,72,28,line,1.5)}
+    <text x="98" y="66" font-family="Georgia,serif" font-weight="700" font-size="34" letter-spacing="3" fill="${ink}">AGS</text>
+    <line x1="99" y1="78" x2="250" y2="78" stroke="${line}" stroke-width="1"/>
+    <text x="99" y="96" font-family="Segoe UI,Arial" font-size="10.5" letter-spacing="2.8" fill="${ink}">ACADEMIC GLOBAL SOLUTIONS</text></svg>`},
+
+ {n:9,t:"Globo ascendente (crecimiento)",d:"Meridianos que suben como una flecha. Global + progreso. Dinámico y serio.",
+  svg:(ink,line)=>`${gdef}<svg viewBox="0 0 320 150"><g fill="none" stroke="${line}" stroke-width="1.7">
+    <circle cx="56" cy="74" r="30"/><path d="M32 84 q24 -34 48 -6" /><path d="M30 68 q26 -20 52 8"/></g>
+    <path d="M74 50 l10 -4 l-3 10" fill="none" stroke="${line}" stroke-width="1.7"/>
+    <text x="106" y="72" font-family="Segoe UI,Arial" font-weight="700" font-size="38" letter-spacing="2" fill="${ink}">AGS</text>
+    <text x="107" y="95" font-family="Segoe UI,Arial" font-size="10.5" letter-spacing="3.2" fill="${ink}">ACADEMIC GLOBAL SOLUTIONS</text></svg>`},
+
+ {n:10,t:"Badge circular (favicon)",d:"Disco navy con globo dorado + AGS. Perfecto para avatar/favicon; nombre al costado.",
+  svg:(ink,line,bg)=>`${gdef}<svg viewBox="0 0 320 150"><circle cx="58" cy="72" r="42" fill="${bg==='light'?NAVY:'#08101f'}" stroke="url(#g)" stroke-width="2"/>
+    ${globo(58,64,20,GOLD)}
+    <text x="58" y="104" text-anchor="middle" font-family="Georgia,serif" font-weight="700" font-size="15" letter-spacing="2" fill="${GOLD}">AGS</text>
+    <text x="116" y="68" font-family="Georgia,serif" font-weight="700" font-size="26" letter-spacing="1.5" fill="${ink}">AGS</text>
+    <text x="117" y="88" font-family="Segoe UI,Arial" font-size="10" letter-spacing="2.4" fill="${ink}">ACADEMIC GLOBAL SOLUTIONS</text></svg>`},
+];
+
+const grid=document.getElementById('grid');
+C.forEach(c=>{
+  const card=document.createElement('div'); card.className='card';
+  card.innerHTML=`<h3>#${c.n} · ${c.t}</h3><p>${c.d}</p>
+    <div class="tiles"><div class="tile navy">${c.svg(GOLD,GOLD,'navy')}</div><div class="tile light">${c.svg(NAVY,GOLD,'light')}</div></div>
+    <span class="tag">Fondo navy · Fondo claro</span>`;
+  grid.appendChild(card);
+});
+</script>
+</body>
+</html>

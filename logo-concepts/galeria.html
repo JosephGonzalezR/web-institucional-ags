@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>AGS · 10 conceptos de logo corporativo</title>
+<style>
+  :root{ --navy:#0B1B33; --navy2:#0A1424; --gold:#C9A24A; --gold2:#E1C06A; --ink:#12233f; }
+  *{box-sizing:border-box}
+  body{margin:0;background:#0e1116;color:#e8ecf2;font:15px/1.5 -apple-system,Segoe UI,Roboto,Arial,sans-serif}
+  header{padding:34px 28px 10px}
+  h1{font:600 24px/1.2 Georgia,serif;margin:0 0 6px;letter-spacing:.3px}
+  .sub{color:#9aa6b6;max-width:760px}
+  .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(340px,1fr));gap:20px;padding:24px 28px 60px}
+  .card{background:#161b22;border:1px solid #232a34;border-radius:14px;overflow:hidden}
+  .card h3{margin:0;padding:14px 16px 4px;font:600 14px/1.3 Segoe UI,Arial;letter-spacing:.4px;color:#dfe6ef}
+  .card p{margin:0;padding:0 16px 12px;color:#8f9bab;font-size:12.5px}
+  .tiles{display:grid;grid-template-columns:1fr 1fr}
+  .tile{display:flex;align-items:center;justify-content:center;min-height:150px;padding:18px}
+  .navy{background:linear-gradient(160deg,#0d2242,#081120)}
+  .light{background:#f4f1ea}
+  .tag{display:inline-block;font-size:11px;color:#6f7a8a;padding:0 16px 14px}
+  svg{max-width:100%;height:auto}
+</style>
+</head>
+<body>
+<header>
+  <h1>Academic Global Solutions · 10 conceptos de logo</h1>
+  <div class="sub">Corporativo, sobrio, oro/navy. Cada concepto se muestra sobre fondo navy y sobre fondo claro. Dime el número (o dos que te gusten para combinar) y lo pulo + genero el set final (SVG + PNG + favicon). Todos son vector: texto nítido y editable.</div>
+</header>
+<div class="grid" id="grid"></div>
+
+<script>
+// Paleta
+const NAVY='#0B1B33', GOLD='#C9A24A', GOLD2='#E1C06A';
+// Degradado dorado metálico reutilizable
+const goldDef = `<defs><linearGradient id="g" x1="0" y1="0" x2="0" y2="1">
+  <stop offset="0" stop-color="#E7CC82"/><stop offset=".5" stop-color="#C9A24A"/><stop offset="1" stop-color="#A9812F"/>
+</linearGradient></defs>`;
+
+// Cada concepto: {n, titulo, desc, svg(fill, sub) } — fill = color de tinta principal (gold sobre navy / navy sobre claro)
+const C = [
+ {n:1, t:"Sello académico", d:"Monograma serif dentro de un anillo doble. Aire Oxford/Harvard.",
+  svg:(ink,line)=>`${goldDef}<svg viewBox="0 0 260 130"><g fill="none" stroke="${line}">
+    <circle cx="65" cy="65" r="44" stroke-width="2"/><circle cx="65" cy="65" r="38" stroke-width="1"/></g>
+    <text x="65" y="78" text-anchor="middle" font-family="Georgia,serif" font-weight="700" font-size="34" fill="${ink}">AGS</text>
+    <text x="125" y="58" font-family="Georgia,serif" font-size="19" fill="${ink}" letter-spacing="1">Academic Global</text>
+    <text x="125" y="82" font-family="Georgia,serif" font-size="19" fill="${ink}" letter-spacing="1">Solutions</text></svg>`},
+
+ {n:2, t:"Wordmark consultora", d:"Sans geométrica + filete dorado + bajada espaciada. Aire McKinsey/Accenture.",
+  svg:(ink,line)=>`<svg viewBox="0 0 260 130"><text x="130" y="66" text-anchor="middle" font-family="Segoe UI,Arial" font-weight="700" font-size="46" letter-spacing="2" fill="${ink}">AGS</text>
+    <line x1="60" y1="82" x2="200" y2="82" stroke="${line}" stroke-width="2"/>
+    <text x="130" y="102" text-anchor="middle" font-family="Segoe UI,Arial" font-size="10.5" letter-spacing="4.5" fill="${ink}">ACADEMIC GLOBAL SOLUTIONS</text></svg>`},
+
+ {n:3, t:"Monograma apilado", d:"Serif clásico con la razón social debajo. Institucional, atemporal.",
+  svg:(ink,line)=>`<svg viewBox="0 0 260 130"><text x="130" y="60" text-anchor="middle" font-family="Georgia,serif" font-weight="700" font-size="44" letter-spacing="3" fill="${ink}">AGS</text>
+    <line x1="80" y1="74" x2="180" y2="74" stroke="${line}" stroke-width="1.5"/>
+    <text x="130" y="94" text-anchor="middle" font-family="Georgia,serif" font-size="11" letter-spacing="3" fill="${ink}">ACADEMIC · GLOBAL · SOLUTIONS</text></svg>`},
+
+ {n:4, t:"Arco global", d:"La 'A' bajo un arco orbital dorado que sugiere alcance global. Minimal, moderno.",
+  svg:(ink,line)=>`<svg viewBox="0 0 260 130"><path d="M42 52 a70 70 0 0 1 176 0" fill="none" stroke="${line}" stroke-width="2.5" stroke-linecap="round"/>
+    <circle cx="200" cy="41" r="3.5" fill="${line}"/>
+    <text x="130" y="92" text-anchor="middle" font-family="Segoe UI,Arial" font-weight="700" font-size="42" letter-spacing="3" fill="${ink}">AGS</text>
+    <text x="130" y="112" text-anchor="middle" font-family="Segoe UI,Arial" font-size="9.5" letter-spacing="4" fill="${ink}">ACADEMIC GLOBAL SOLUTIONS</text></svg>`},
+
+ {n:5, t:"Escudo / crest", d:"Blasón sobrio con 'AGS'. Aire estudio de abogados / colegiatura.",
+  svg:(ink,line)=>`<svg viewBox="0 0 260 130"><path d="M65 22 h60 v40 q0 34 -30 48 q-30 -14 -30 -48 z" fill="none" stroke="${line}" stroke-width="2"/>
+    <line x1="72" y1="46" x2="118" y2="46" stroke="${line}" stroke-width="1"/>
+    <text x="95" y="60" text-anchor="middle" font-family="Georgia,serif" font-weight="700" font-size="22" fill="${ink}">AGS</text>
+    <text x="150" y="58" font-family="Georgia,serif" font-size="17" fill="${ink}">Academic Global</text>
+    <text x="150" y="80" font-family="Georgia,serif" font-size="17" fill="${ink}">Solutions</text></svg>`},
+
+ {n:6, t:"Lujo minimal", d:"Solo 'AGS' en serif fino muy espaciado. Elegante, tipo firma premium.",
+  svg:(ink,line)=>`<svg viewBox="0 0 260 130"><text x="130" y="74" text-anchor="middle" font-family="Georgia,serif" font-weight="400" font-size="50" letter-spacing="12" fill="${ink}">AGS</text>
+    <text x="132" y="98" text-anchor="middle" font-family="Segoe UI,Arial" font-size="9" letter-spacing="6" fill="${ink}">GLOBAL SOLUTIONS</text></svg>`},
+
+ {n:7, t:"Roundel sello", d:"Doble anillo con texto en la orla y monograma serif al centro.",
+  svg:(ink,line)=>`<svg viewBox="0 0 260 130"><defs><path id="arc" d="M65 65 m-46 0 a46 46 0 1 1 92 0" fill="none"/></defs>
+    <circle cx="65" cy="65" r="50" fill="none" stroke="${line}" stroke-width="1.5"/><circle cx="65" cy="65" r="42" fill="none" stroke="${line}" stroke-width="1"/>
+    <text font-family="Georgia,serif" font-size="9" letter-spacing="3.5" fill="${ink}"><textPath href="#arc" startOffset="6%">ACADEMIC · GLOBAL · SOLUTIONS ·</textPath></text>
+    <text x="65" y="76" text-anchor="middle" font-family="Georgia,serif" font-weight="700" font-size="30" fill="${ink}">AGS</text>
+    <text x="130" y="72" font-family="Georgia,serif" font-size="26" fill="${ink}" letter-spacing="2">Academic Global Solutions</text></svg>`},
+
+ {n:8, t:"Globo monolínea", d:"Meridianos finos + wordmark al lado. Aire consultora internacional.",
+  svg:(ink,line)=>`<svg viewBox="0 0 260 130"><g fill="none" stroke="${line}" stroke-width="1.6">
+    <circle cx="58" cy="65" r="34"/><ellipse cx="58" cy="65" rx="14" ry="34"/><line x1="24" y1="65" x2="92" y2="65"/>
+    <path d="M30 48 h56 M30 82 h56"/></g>
+    <text x="108" y="62" font-family="Segoe UI,Arial" font-weight="700" font-size="34" letter-spacing="2" fill="${ink}">AGS</text>
+    <text x="109" y="82" font-family="Segoe UI,Arial" font-size="9.5" letter-spacing="3" fill="${ink}">ACADEMIC GLOBAL SOLUTIONS</text></svg>`},
+
+ {n:9, t:"Badge app-icon", d:"Placa navy con borde dorado y 'AGS' serif. Ideal favicon / avatar.",
+  svg:(ink,line,bg)=>`${goldDef}<svg viewBox="0 0 260 130"><rect x="86" y="20" width="88" height="88" rx="18" fill="${bg==='light'?NAVY:'#08101f'}" stroke="url(#g)" stroke-width="2.5"/>
+    <text x="130" y="76" text-anchor="middle" font-family="Georgia,serif" font-weight="700" font-size="34" fill="url(#g)">AGS</text></svg>`},
+
+ {n:10, t:"Lockup horizontal", d:"Cuadro-monograma dorado + wordmark. El más versátil para web/membrete.",
+  svg:(ink,line)=>`${goldDef}<svg viewBox="0 0 260 130"><rect x="30" y="42" width="46" height="46" rx="9" fill="url(#g)"/>
+    <text x="53" y="74" text-anchor="middle" font-family="Georgia,serif" font-weight="700" font-size="22" fill="${NAVY}">A</text>
+    <text x="90" y="62" font-family="Segoe UI,Arial" font-weight="700" font-size="26" letter-spacing="2" fill="${ink}">AGS</text>
+    <text x="91" y="80" font-family="Segoe UI,Arial" font-size="9" letter-spacing="2.5" fill="${ink}">ACADEMIC GLOBAL SOLUTIONS</text></svg>`},
+];
+
+const grid=document.getElementById('grid');
+C.forEach(c=>{
+  const card=document.createElement('div'); card.className='card';
+  card.innerHTML=`<h3>#${c.n} · ${c.t}</h3><p>${c.d}</p>
+    <div class="tiles">
+      <div class="tile navy">${c.svg(GOLD, GOLD,'navy')}</div>
+      <div class="tile light">${c.svg(NAVY, GOLD,'light')}</div>
+    </div>
+    <span class="tag">Fondo navy · Fondo claro</span>`;
+  grid.appendChild(card);
+});
+</script>
+</body>
+</html>

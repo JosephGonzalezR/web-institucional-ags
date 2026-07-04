@@ -6,8 +6,10 @@ export type Lang = "es" | "en";
 export interface Messages {
   nav: Record<"nosotros" | "presencia" | "servicios" | "contacto", string>;
   hero: {
+    eyebrow: string;
     badge: string;
     claim: string;
+    cta: string;
     stats: { seguidores: string; cuentas: string; paises: string; webs: string };
   };
   nosotros: {
@@ -75,8 +77,10 @@ export const DICT: Record<Lang, Messages> = {
       contacto: "Contacto",
     },
     hero: {
+      eyebrow: "Servicios academicos · Peru · Chile · Argentina",
       badge: "Asesoria academica en tres paises de Sudamerica",
       claim: "Infraestructura academica con presencia en Peru, Chile y Argentina",
+      cta: "Conocer AGS",
       stats: {
         seguidores: "Seguidores en redes",
         cuentas: "Cuentas activas",
@@ -211,8 +215,10 @@ export const DICT: Record<Lang, Messages> = {
       contacto: "Contact",
     },
     hero: {
+      eyebrow: "Academic services · Peru · Chile · Argentina",
       badge: "Academic advising across three countries in South America",
       claim: "Academic infrastructure with presence in Peru, Chile and Argentina",
+      cta: "Discover AGS",
       stats: {
         seguidores: "Social followers",
         cuentas: "Active accounts",

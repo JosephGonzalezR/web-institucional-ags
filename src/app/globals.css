@@ -9,80 +9,77 @@
   }
 
   body {
-    @apply bg-ink text-slate-200 antialiased;
-    background-image: radial-gradient(
-        60% 40% at 50% -8%,
-        rgba(220, 167, 61, 0.12) 0%,
-        rgba(10, 20, 36, 0) 60%
-      ),
-      radial-gradient(
-        40% 30% at 100% 10%,
-        rgba(21, 41, 74, 0.6) 0%,
-        rgba(10, 20, 36, 0) 70%
-      );
-    background-repeat: no-repeat;
+    @apply bg-marfil text-ink antialiased;
+    font-feature-settings: "kern", "liga", "calt";
   }
 
   ::selection {
-    background: rgba(220, 167, 61, 0.32);
-    color: #fff;
+    background: rgba(184, 134, 59, 0.22);
+    color: #0b1b33;
   }
 
   :where(a, button, [tabindex]):focus-visible {
-    outline: 2px solid #e8c16a;
+    outline: 2px solid #b8863b;
     outline-offset: 3px;
-    border-radius: 4px;
+    border-radius: 2px;
   }
 
-  h1, h2, h3 {
+  h1,
+  h2,
+  h3 {
     text-wrap: balance;
   }
 
-  /* Scrollbar a tono. */
   * {
-    scrollbar-color: rgba(220, 167, 61, 0.35) transparent;
+    scrollbar-color: rgba(11, 27, 51, 0.28) transparent;
+  }
+}
+
+@layer components {
+  /* Contenedor editorial con margenes generosos. */
+  .container-pad {
+    @apply mx-auto w-full max-w-[1240px] px-5 sm:px-8 lg:px-[clamp(2rem,5vw,6rem)];
+  }
+
+  /* Epigrafe editorial: versalitas, tracking amplio, dorado legible. */
+  .eyebrow {
+    @apply text-xs font-semibold uppercase tracking-eyebrow text-gold-dark;
+  }
+
+  /* Enlace-CTA editorial (no boton relleno). */
+  .cta-link {
+    @apply inline-flex w-fit items-center gap-2.5 border-b border-ink pb-1 text-[15px]
+      font-medium text-ink transition-[gap,color,border-color] duration-200
+      hover:gap-3.5 hover:border-gold hover:text-gold-dark;
   }
 }
 
 @layer utilities {
-  .text-balance {
-    text-wrap: balance;
-  }
-
-  .container-pad {
-    @apply mx-auto w-full max-w-[1200px] px-6;
-  }
-
   .font-display {
     font-family: var(--font-display), Georgia, serif;
   }
 
-  /* Titular en oro metalico con brillo en movimiento. */
-  .text-gold {
-    background: linear-gradient(
-      110deg,
-      #fbf4dc 0%,
-      #e8c16a 30%,
-      #fff7e0 45%,
-      #dca73d 60%,
-      #a87a22 100%
+  /* Titular serif display: interlineado apretado + tracking negativo. */
+  .display-tight {
+    @apply font-display font-normal tracking-tightest;
+    line-height: 1.03;
+  }
+
+  /* Grilla fina de fondo (papel), muy tenue. */
+  .grid-lines {
+    background-image: repeating-linear-gradient(
+      90deg,
+      rgba(11, 27, 51, 0.045) 0 1px,
+      transparent 1px 84px
     );
-    background-size: 200% auto;
-    -webkit-background-clip: text;
-    background-clip: text;
-    color: transparent;
-    animation: sheen 6s linear infinite;
   }
 
-  .text-ghost {
-    background: linear-gradient(180deg, #ffffff 0%, #b9c6da 100%);
-    -webkit-background-clip: text;
-    background-clip: text;
-    color: transparent;
-  }
-
-  .hairline {
-    @apply border border-line;
+  .grid-lines-navy {
+    background-image: repeating-linear-gradient(
+      90deg,
+      rgba(242, 239, 226, 0.05) 0 1px,
+      transparent 1px 88px
+    );
   }
 }
 
@@ -94,8 +91,5 @@
     animation-iteration-count: 1 !important;
     transition-duration: 0.001ms !important;
     scroll-behavior: auto !important;
-  }
-  .text-gold {
-    animation: none !important;
   }
 }

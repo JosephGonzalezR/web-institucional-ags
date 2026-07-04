@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>AGS #6 · 10 variaciones de color</title>
+<style>
+ body{margin:0;background:#0e1116;color:#e8ecf2;font:15px/1.5 Segoe UI,Arial,sans-serif}
+ header{padding:32px 28px 8px} h1{font:600 23px Georgia,serif;margin:0 0 6px}
+ .sub{color:#9aa6b6;max-width:820px}
+ .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:18px;padding:22px 28px 60px}
+ .card{background:#161b22;border:1px solid #232a34;border-radius:14px;overflow:hidden}
+ .card img{width:100%;display:block}
+ .card h3{margin:0;padding:12px 14px 3px;font:600 14px Segoe UI;color:#dfe6ef}
+ .card p{margin:0;padding:0 14px 12px;color:#8f9bab;font-size:12px}
+</style></head><body>
+<header><h1>AGS · Logo #6 (globo como la 'G') — 10 variaciones de color</h1>
+<div class="sub">Mismo concepto, 10 paletas con criterio de marca. Dime el número que más te representa y con esa hago el set final (vector + favicon + PNG en fondo claro/oscuro/transparente) y la monto en la web.</div></header>
+<div class="grid" id="g"></div>
+<script>
+const L=[
+ [1,"01_esmeralda_oro","Verde esmeralda + oro — prestigio Ivy League"],
+ [2,"02_burdeos_oro","Vino burdeos + oro — autoridad clásica"],
+ [3,"03_carbon_oro","Negro carbón + oro — lujo premium"],
+ [4,"04_azulreal_platino","Azul real + platino — corporativo moderno"],
+ [5,"05_oxford_marfil","Azul Oxford + marfil — universitario clásico"],
+ [6,"06_bosque_crema","Verde bosque + crema — natural, confiable"],
+ [7,"07_petroleo_cobre","Petróleo/teal + cobre — moderno, distintivo"],
+ [8,"08_purpura_oro","Púrpura + oro — prestigio, creatividad"],
+ [9,"09_pizarra_azul","Gris pizarra + azul brillante — clean tech"],
+ [10,"10_marfil_navy_oro","Marfil + navy & oro — versión clara"],
+];
+g.innerHTML=L.map(([n,f,t])=>`<div class="card"><img src="${f}.png" alt="${t}"><h3>#${n}</h3><p>${t}</p></div>`).join("");
+</script>
+</body></html>

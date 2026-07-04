@@ -3,7 +3,7 @@
 import { SITE } from "@/config/site";
 import { PAISES } from "@/config/paises";
 import { SectionHeader } from "@/components/section-header";
-import { Mail, Globe, WhatsApp } from "@/components/icons";
+import { Globe, WhatsApp, ArrowUpRight } from "@/components/icons";
 import { waLink } from "@/lib/format";
 import { useLang } from "@/i18n/provider";
 import { Reveal } from "@/components/reveal";
@@ -12,57 +12,55 @@ export function Contacto() {
   const { t } = useLang();
 
   return (
-    <section id="contacto" className="border-b border-line py-20 sm:py-28">
+    <section id="contacto" className="border-b border-line py-[clamp(72px,9vw,148px)]">
       <div className="container-pad">
         <SectionHeader
           eyebrow={t.contacto.eyebrow}
+          numero="05"
           titulo={t.contacto.titulo}
           descripcion={t.contacto.descripcion}
         />
 
-        <Reveal className="mx-auto mt-12 max-w-4xl">
+        <Reveal className="mt-14">
+          {/* Correo institucional como fila editorial. */}
           <a
             href={`mailto:${SITE.correo}`}
-            className="group flex flex-col items-start justify-between gap-4 rounded-2xl border border-line bg-gradient-to-b from-panel-2 to-panel p-6 shadow-panel transition-all duration-300 hover:-translate-y-1 hover:border-brand-400/40 hover:shadow-lift sm:flex-row sm:items-center"
+            className="group flex flex-col gap-4 border-y border-line py-8 transition-colors hover:bg-ink/[0.015] sm:flex-row sm:items-center sm:justify-between"
           >
-            <span className="flex items-center gap-4">
-              <span className="inline-flex h-12 w-12 items-center justify-center rounded-xl border border-line bg-white/5 text-brand-300">
-                <Mail className="h-6 w-6" />
-              </span>
-              <span>
-                <span className="block text-xs uppercase tracking-wide text-slate-400">
-                  {t.contacto.correoLabel}
-                </span>
-                <span className="block text-lg font-medium text-white">
-                  {SITE.correo}
-                </span>
+            <span>
+              <span className="eyebrow block">{t.contacto.correoLabel}</span>
+              <span className="mt-2 block font-display text-[clamp(24px,3vw,38px)] tracking-tight text-ink">
+                {SITE.correo}
               </span>
             </span>
-            <span className="text-sm text-brand-300 transition-colors group-hover:text-brand-200">
+            <span className="inline-flex items-center gap-2 text-[15px] font-medium text-gold-dark">
               {t.contacto.escribir}
+              <ArrowUpRight className="h-5 w-5 transition-transform group-hover:translate-x-1 group-hover:-translate-y-1" />
             </span>
           </a>
+        </Reveal>
 
-          <div className="mt-6 grid gap-4 sm:grid-cols-3">
-            {PAISES.map((p) => (
-              <div key={p.codigo} className="rounded-2xl border border-line bg-panel p-5">
-                <div className="flex items-center gap-2">
-                  <span aria-hidden="true" className="text-lg leading-none">
-                    {p.bandera}
+        <div className="mt-8 grid gap-px overflow-hidden border border-line bg-line sm:grid-cols-3">
+          {PAISES.map((p, i) => (
+            <Reveal key={p.codigo} delay={i * 80}>
+              <div className="h-full bg-marfil p-6">
+                <div className="flex items-baseline justify-between">
+                  <span className="font-display text-lg text-ink">{p.marca}</span>
+                  <span className="font-display text-xs uppercase tracking-eyebrow text-gold">
+                    {p.codigo}
                   </span>
-                  <span className="text-sm font-semibold text-white">{p.marca}</span>
                 </div>
-                <p className="mt-1 text-xs text-slate-400">{p.ciudad}</p>
+                <p className="mt-1 text-xs text-muted-2">{p.ciudad}</p>
 
-                <div className="mt-4 flex flex-col gap-2">
+                <div className="mt-5 flex flex-col gap-2.5">
                   {p.web ? (
                     <a
                       href={p.web}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="inline-flex items-center gap-2 text-sm text-slate-200 transition-colors hover:text-white"
+                      className="inline-flex items-center gap-2 text-sm text-ink transition-colors hover:text-gold-dark"
                     >
-                      <Globe className="h-4 w-4 text-brand-300" />
+                      <Globe className="h-4 w-4 text-gold-dark" />
                       {t.card.sitioWeb}
                     </a>
                   ) : null}
@@ -71,7 +69,7 @@ export function Contacto() {
                       href={waLink(p.whatsapp)}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="inline-flex items-center gap-2 text-sm text-slate-200 transition-colors hover:text-white"
+                      className="inline-flex items-center gap-2 text-sm text-ink transition-colors hover:text-gold-dark"
                     >
                       <WhatsApp className="h-4 w-4 text-[#25D366]" />
                       {p.whatsapp}
@@ -79,9 +77,9 @@ export function Contacto() {
                   ) : null}
                 </div>
               </div>
-            ))}
-          </div>
-        </Reveal>
+            </Reveal>
+          ))}
+        </div>
       </div>
     </section>
   );

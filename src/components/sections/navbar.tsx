@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import Image from "next/image";
-import { NAV, SITE } from "@/config/site";
+import { NAV } from "@/config/site";
 import { Menu, Close } from "@/components/icons";
 import { LangSwitch } from "@/components/lang-switch";
 import { useLang } from "@/i18n/provider";
@@ -12,46 +12,47 @@ export function Navbar() {
   const { t } = useLang();
 
   return (
-    <header className="sticky top-0 z-50 border-b border-line bg-ink/80 backdrop-blur-md">
+    <header className="sticky top-0 z-50 border-b border-line bg-marfil/85 backdrop-blur-md">
       <nav
-        className="container-pad flex h-16 items-center justify-between gap-4"
+        className="container-pad flex h-[76px] items-center justify-between gap-4"
         aria-label="Principal"
       >
-        <a href="#inicio" className="flex items-center gap-2.5">
+        <a href="#inicio" className="flex items-center" aria-label="Academic Global Solutions">
           <Image
-            src="/logo.png"
-            alt={`${SITE.nombre} logo`}
-            width={34}
-            height={34}
-            className="h-8 w-8 rounded-md object-contain"
+            src="/logo-lockup.png"
+            alt="Academic Global Solutions"
+            width={210}
+            height={108}
+            className="h-9 w-auto object-contain"
             priority
           />
-          <span className="text-sm font-semibold tracking-wide text-white">
-            {SITE.sigla}
-            <span className="ml-2 hidden font-normal text-slate-400 sm:inline">
-              Academic Global Solutions
-            </span>
-          </span>
         </a>
 
-        <ul className="hidden items-center gap-8 md:flex">
+        <ul className="hidden items-center gap-9 md:flex">
           {NAV.map((item) => (
             <li key={item.href}>
               <a
                 href={item.href}
-                className="text-sm text-slate-300 transition-colors hover:text-white"
+                className="group relative py-1 text-[15px] text-muted transition-colors hover:text-ink"
               >
                 {t.nav[item.id]}
+                <span className="absolute inset-x-0 bottom-0 h-px w-0 bg-gold transition-all duration-200 group-hover:w-full" />
               </a>
             </li>
           ))}
         </ul>
 
-        <div className="flex items-center gap-2">
+        <div className="flex items-center gap-3">
+          <a
+            href="#contacto"
+            className="hidden text-[15px] font-medium text-ink transition-colors hover:text-gold-dark md:inline"
+          >
+            {t.nav.contacto}&nbsp;&rarr;
+          </a>
           <LangSwitch />
           <button
             type="button"
-            className="inline-flex h-10 w-10 items-center justify-center rounded-lg text-slate-200 hover:bg-white/5 md:hidden"
+            className="inline-flex h-10 w-10 items-center justify-center rounded-sm text-ink hover:bg-ink/5 md:hidden"
             aria-label={abierto ? "Cerrar menu" : "Abrir menu"}
             aria-expanded={abierto}
             onClick={() => setAbierto((v) => !v)}
@@ -68,7 +69,7 @@ export function Navbar() {
               <li key={item.href}>
                 <a
                   href={item.href}
-                  className="block py-3 text-sm text-slate-300 hover:text-white"
+                  className="block py-3 text-[15px] text-muted hover:text-ink"
                   onClick={() => setAbierto(false)}
                 >
                   {t.nav[item.id]}
