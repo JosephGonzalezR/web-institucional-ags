@@ -18,13 +18,18 @@ export function Footer() {
       <div className="container-pad py-16">
         <div className="grid gap-12 md:grid-cols-[1.4fr_1fr]">
           <div>
-            <Image
-              src={asset("/logo-lockup-dark.png")}
-              alt={`${SITE.nombre} logo`}
-              width={200}
-              height={104}
-              className="h-9 w-auto object-contain"
-            />
+            <div className="flex items-center gap-3">
+              <Image
+                src={asset("/logo-mark-dark.png")}
+                alt={`${SITE.nombre} logo`}
+                width={88}
+                height={88}
+                className="h-11 w-11 object-contain"
+              />
+              <span className="font-display text-xl tracking-tight text-marfil">
+                Academic Global Solution
+              </span>
+            </div>
             <p className="mt-6 max-w-sm text-sm leading-relaxed text-[rgba(242,239,226,0.55)]">
               {t.footer.descripcion}
             </p>

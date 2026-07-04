@@ -18,15 +18,22 @@ export function Navbar() {
         className="container-pad flex h-[76px] items-center justify-between gap-4"
         aria-label="Principal"
       >
-        <a href="#inicio" className="flex items-center" aria-label="Academic Global Solutions">
+        <a
+          href="#inicio"
+          className="flex items-center gap-3"
+          aria-label="Academic Global Solution"
+        >
           <Image
-            src={asset("/logo-lockup.png")}
-            alt="Academic Global Solutions"
-            width={210}
-            height={108}
-            className="h-9 w-auto object-contain"
+            src={asset("/logo-mark.png")}
+            alt="AGS"
+            width={88}
+            height={88}
+            className="h-10 w-10 object-contain"
             priority
           />
+          <span className="hidden font-display text-lg tracking-tight text-ink sm:inline">
+            Academic Global Solution
+          </span>
         </a>
 
         <ul className="hidden items-center gap-9 md:flex">

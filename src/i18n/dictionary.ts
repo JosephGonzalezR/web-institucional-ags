@@ -100,7 +100,7 @@ export const DICT: Record<Lang, Messages> = {
       eyebrow: "Quienes somos",
       titulo: "Una organizacion academica multipais",
       parrafos: [
-        "Academic Global Solutions (AGS) es una organizacion dedicada a la asesoria academica que opera de forma simultanea en Peru, Chile y Argentina. Cada pais cuenta con su propia marca, su sitio web, sus canales de contacto y su comunidad en redes sociales.",
+        "Academic Global Solution (AGS) es una organizacion dedicada a la asesoria academica que opera de forma simultanea en Peru, Chile y Argentina. Cada pais cuenta con su propia marca, su sitio web, sus canales de contacto y su comunidad en redes sociales.",
         "Nuestra estructura combina equipos locales con una base tecnologica comun: infraestructura digital propia, atencion por canales oficiales y procesos estandarizados de trabajo. Asi mantenemos una operacion consistente en los tres mercados.",
         "Las cuentas, los sitios y las comunidades que se muestran en esta pagina reflejan el alcance de la organizacion. Las cifras corresponden a la captura inicial y se actualizan de forma periodica.",
       ],
@@ -112,7 +112,7 @@ export const DICT: Record<Lang, Messages> = {
     },
     diferencial: {
       eyebrow: "Nuestro diferencial",
-      titulo: "Por que las tesis y trabajos nos eligen",
+      titulo: "Por que los estudiantes nos eligen",
       descripcion:
         "Lo que nos distingue no es solo estar en tres paises: es como trabajamos.",
       items: [
@@ -207,7 +207,7 @@ export const DICT: Record<Lang, Messages> = {
     },
     footer: {
       descripcion:
-        "Academic Global Solutions es una organizacion de servicios academicos con operacion activa en tres paises de Sudamerica. Sitios, canales de contacto y comunidades en redes que respaldan su presencia.",
+        "Academic Global Solution es una organizacion de servicios academicos con operacion activa en tres paises de Sudamerica. Sitios, canales de contacto y comunidades en redes que respaldan su presencia.",
       presenciaTitulo: "Presencia por pais",
       registro: "Registro legal",
       derechos: "Todos los derechos reservados.",
@@ -253,7 +253,7 @@ export const DICT: Record<Lang, Messages> = {
       eyebrow: "About us",
       titulo: "A multi-country academic organization",
       parrafos: [
-        "Academic Global Solutions (AGS) is an academic advising organization operating at the same time in Peru, Chile and Argentina. Each country has its own brand, website, contact channels and social media community.",
+        "Academic Global Solution (AGS) is an academic advising organization operating at the same time in Peru, Chile and Argentina. Each country has its own brand, website, contact channels and social media community.",
         "Our structure combines local teams with a shared technology base: our own digital infrastructure, official support channels and standardized work processes. This keeps a consistent operation across the three markets.",
         "The accounts, sites and communities shown on this page reflect the reach of the organization. The figures correspond to the initial snapshot and are updated periodically.",
       ],
@@ -265,7 +265,7 @@ export const DICT: Record<Lang, Messages> = {
     },
     diferencial: {
       eyebrow: "Why AGS",
-      titulo: "Why theses and assignments choose us",
+      titulo: "Why students choose us",
       descripcion:
         "What sets us apart is not just being in three countries: it is how we work.",
       items: [
@@ -360,7 +360,7 @@ export const DICT: Record<Lang, Messages> = {
     },
     footer: {
       descripcion:
-        "Academic Global Solutions is an academic services organization operating in three countries in South America. Sites, contact channels and social communities that back its presence.",
+        "Academic Global Solution is an academic services organization operating in three countries in South America. Sites, contact channels and social communities that back its presence.",
       presenciaTitulo: "Presence by country",
       registro: "Legal registration",
       derechos: "All rights reserved.",

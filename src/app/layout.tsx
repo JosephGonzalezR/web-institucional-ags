@@ -39,7 +39,7 @@ export const metadata: Metadata = {
   description: SITE.descripcion,
   applicationName: SITE.nombre,
   keywords: [
-    "Academic Global Solutions",
+    "Academic Global Solution",
     "AGS",
     "asesoria academica",
     "tesis",

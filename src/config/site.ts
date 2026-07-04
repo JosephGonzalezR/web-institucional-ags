@@ -5,11 +5,11 @@
  */
 
 export const SITE = {
-  nombre: "Academic Global Solutions",
+  nombre: "Academic Global Solution",
   sigla: "AGS",
   // Descripcion neutra usada en metadata y schema.org.
   descripcion:
-    "Academic Global Solutions es una organizacion de servicios academicos con operacion activa en tres paises de Sudamerica. Sitios, canales de contacto y comunidades en redes que respaldan su presencia.",
+    "Academic Global Solution es una organizacion de servicios academicos con operacion activa en tres paises de Sudamerica. Sitios, canales de contacto y comunidades en redes que respaldan su presencia.",
   correo: "contact@academicglobalsolution.com",
   correoVentas: "ventas@academicglobalsolution.com",
   dominio: "academicglobalsolution.com",
