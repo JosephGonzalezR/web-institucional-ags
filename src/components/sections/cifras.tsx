@@ -15,10 +15,10 @@ function Bar({ pct }: { pct: number }) {
   return (
     <div
       ref={ref}
-      className="mt-2 h-px w-full overflow-hidden bg-[rgba(242,239,226,0.14)]"
+      className="mt-3 h-2 w-full overflow-hidden rounded-full bg-[rgba(242,239,226,0.1)]"
     >
       <div
-        className="h-full bg-gold-light transition-[width] duration-1000 ease-out motion-reduce:transition-none"
+        className="h-full rounded-full bg-[linear-gradient(90deg,#9A6E2E,#C9A24A_60%,#E7CC82)] transition-[width] duration-1000 ease-out motion-reduce:transition-none"
         style={{ width: inView ? `${pct}%` : "0%" }}
       />
     </div>

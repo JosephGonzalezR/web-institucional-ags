@@ -45,11 +45,11 @@ function RedFila({ pais, red }: { pais: Pais; red: RedKey }) {
       <span className="flex min-w-0 items-center gap-3">
         <span
           className={cn(
-            "inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-sm",
+            "inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-sm shadow-card transition-transform group-hover:scale-105",
             CHIP[red],
           )}
         >
-          <Icono className="h-[18px] w-[18px]" />
+          <Icono className="h-5 w-5" />
         </span>
         <span className="min-w-0">
           <span className="block text-sm font-medium text-ink">{nombre}</span>
@@ -60,7 +60,7 @@ function RedFila({ pais, red }: { pais: Pais; red: RedKey }) {
       <span className="flex shrink-0 items-center gap-2 text-right">
         {r.seguidores != null ? (
           <span className="leading-tight">
-            <span className="block font-display text-[15px] text-ink">
+            <span className="block font-display text-lg leading-none text-ink">
               {fmt(r.seguidores)}
             </span>
             <span className="block text-[10px] uppercase tracking-eyebrow text-muted-2">
@@ -93,10 +93,15 @@ export function CountryCard({ pais }: { pais: Pais }) {
     <article className="group flex flex-col border border-line bg-paper p-6 shadow-card transition-all duration-300 hover:-translate-y-1 hover:border-gold/40 hover:shadow-lift">
       <div className="flex items-start justify-between gap-3">
         <div className="min-w-0">
-          <h3 className="font-display text-2xl tracking-tight text-ink">
-            {pais.pais}
-          </h3>
-          <p className="mt-1 text-sm font-medium text-gold-dark">{pais.marca}</p>
+          <div className="flex items-center gap-2.5">
+            <span aria-hidden="true" className="text-2xl leading-none">
+              {pais.bandera}
+            </span>
+            <h3 className="font-display text-2xl tracking-tight text-ink">
+              {pais.pais}
+            </h3>
+          </div>
+          <p className="mt-1.5 text-sm font-medium text-gold-dark">{pais.marca}</p>
           <p className="mt-1 inline-flex items-center gap-1 text-xs text-muted-2">
             <MapPin className="h-3.5 w-3.5" />
             {pais.ciudad}

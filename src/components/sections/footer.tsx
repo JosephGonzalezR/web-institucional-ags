@@ -4,6 +4,7 @@ import Image from "next/image";
 import { SITE } from "@/config/site";
 import { PAISES, REDES_ORDEN } from "@/config/paises";
 import { RED_ICONS, Globe, Mail } from "@/components/icons";
+import { REGISTROS_LIST } from "@/config/legal";
 import { asset } from "@/lib/asset";
 import { useLang } from "@/i18n/provider";
 
@@ -88,6 +89,23 @@ export function Footer() {
             </ul>
           </div>
         </div>
+
+        {REGISTROS_LIST.length > 0 ? (
+          <div className="mt-14 border-t border-line-navy pt-6">
+            <h3 className="eyebrow text-[rgba(242,239,226,0.6)]">
+              {t.footer.registro}
+            </h3>
+            <ul className="mt-4 flex flex-wrap gap-x-10 gap-y-2 text-xs text-[rgba(242,239,226,0.6)]">
+              {REGISTROS_LIST.map(([codigo, r]) => (
+                <li key={codigo}>
+                  <span className="text-marfil">{r.razonSocial}</span>
+                  <span className="mx-2 text-gold-light">·</span>
+                  {r.tipo} {r.numero}
+                </li>
+              ))}
+            </ul>
+          </div>
+        ) : null}
 
         <div className="mt-14 flex flex-col items-start justify-between gap-3 border-t border-line-navy pt-6 text-xs text-[rgba(242,239,226,0.45)] sm:flex-row sm:items-center">
           <p>

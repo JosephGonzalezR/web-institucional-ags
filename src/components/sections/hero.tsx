@@ -78,8 +78,12 @@ export function Hero() {
         </div>
 
         <Reveal delay={160} className="lg:col-span-5 lg:justify-self-end">
-          <div className="mx-auto w-[min(78%,360px)] text-gold/85 lg:mr-0">
-            <GlobeLine />
+          <div className="relative mx-auto w-[min(80%,380px)] lg:mr-0">
+            <div
+              aria-hidden="true"
+              className="absolute inset-0 -z-10 scale-125 rounded-full bg-[radial-gradient(closest-side,rgba(184,134,59,0.18),transparent)]"
+            />
+            <GlobeLine className="animate-spin-slow text-gold/85 motion-reduce:animate-none" />
           </div>
         </Reveal>
       </div>

@@ -61,6 +61,7 @@ export interface Messages {
   footer: {
     descripcion: string;
     presenciaTitulo: string;
+    registro: string;
     derechos: string;
     operacion: string;
   };
@@ -187,6 +188,7 @@ export const DICT: Record<Lang, Messages> = {
       descripcion:
         "Academic Global Solutions es una organizacion de servicios academicos con operacion activa en tres paises de Sudamerica. Sitios, canales de contacto y comunidades en redes que respaldan su presencia.",
       presenciaTitulo: "Presencia por pais",
+      registro: "Registro legal",
       derechos: "Todos los derechos reservados.",
       operacion: "Operacion en Peru, Chile y Argentina.",
     },
@@ -325,6 +327,7 @@ export const DICT: Record<Lang, Messages> = {
       descripcion:
         "Academic Global Solutions is an academic services organization operating in three countries in South America. Sites, contact channels and social communities that back its presence.",
       presenciaTitulo: "Presence by country",
+      registro: "Legal registration",
       derechos: "All rights reserved.",
       operacion: "Operating in Peru, Chile and Argentina.",
     },
