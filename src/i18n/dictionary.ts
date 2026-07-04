@@ -99,7 +99,7 @@ export const DICT: Record<Lang, Messages> = {
     },
     nosotros: {
       eyebrow: "Quienes somos",
-      titulo: "Una organizacion academica multipais",
+      titulo: "Una organizacion academica regional",
       parrafos: [
         "Academic Global Solution (AGS) es una organizacion dedicada a la asesoria academica que opera de forma simultanea en Peru, Chile y Argentina. Cada pais cuenta con su propia marca, su sitio web, sus canales de contacto y su comunidad en redes sociales.",
         "Nuestra estructura combina equipos locales con una base tecnologica comun: infraestructura digital propia, atencion por canales oficiales y procesos estandarizados de trabajo. Asi mantenemos una operacion consistente en los tres mercados.",
@@ -125,7 +125,7 @@ export const DICT: Record<Lang, Messages> = {
       ],
     },
     presencia: {
-      eyebrow: "Presencia digital multipais",
+      eyebrow: "Presencia digital",
       titulo: "Tres paises, tres marcas, una organizacion",
       descripcion:
         "Cada pais opera con su propia marca, sitio web, canal de contacto y comunidad en redes. Esta es la presencia de AGS en Sudamerica.",
@@ -253,7 +253,7 @@ export const DICT: Record<Lang, Messages> = {
     },
     nosotros: {
       eyebrow: "About us",
-      titulo: "A multi-country academic organization",
+      titulo: "A regional academic organization",
       parrafos: [
         "Academic Global Solution (AGS) is an academic advising organization operating at the same time in Peru, Chile and Argentina. Each country has its own brand, website, contact channels and social media community.",
         "Our structure combines local teams with a shared technology base: our own digital infrastructure, official support channels and standardized work processes. This keeps a consistent operation across the three markets.",
@@ -279,7 +279,7 @@ export const DICT: Record<Lang, Messages> = {
       ],
     },
     presencia: {
-      eyebrow: "Multi-country digital presence",
+      eyebrow: "Digital presence",
       titulo: "Three countries, three brands, one organization",
       descripcion:
         "Each country runs its own brand, website, contact channel and social community. This is the presence of AGS in South America.",
