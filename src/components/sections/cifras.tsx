@@ -43,10 +43,10 @@ export function Cifras() {
       />
       <div className="container-pad relative py-[clamp(72px,9vw,148px)]">
         <Reveal className="max-w-3xl">
-          <p className="eyebrow text-gold-light">
-            <span className="text-gold-light">03</span>
-            <span className="mx-2 text-gold-light/50">/</span>
-            {t.cifras.eyebrow}
+          <p className="eyebrow flex items-center gap-3 text-gold-light">
+            <span className="font-display text-xl not-italic text-gold-light">04</span>
+            <span aria-hidden="true" className="h-px w-8 bg-gold-light/40" />
+            <span>{t.cifras.eyebrow}</span>
           </p>
           <h2 className="display-tight mt-5 text-[clamp(30px,3.6vw,44px)] text-marfil">
             {t.cifras.titulo}

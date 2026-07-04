@@ -91,25 +91,22 @@ export function CountryCard({ pais }: { pais: Pais }) {
 
   return (
     <article className="group flex flex-col border border-line bg-paper p-6 shadow-card transition-all duration-300 hover:-translate-y-1 hover:border-gold/40 hover:shadow-lift">
-      <div className="flex items-start justify-between gap-3">
-        <div className="min-w-0">
-          <div className="flex items-center gap-2.5">
-            <span aria-hidden="true" className="text-2xl leading-none">
-              {pais.bandera}
-            </span>
-            <h3 className="font-display text-2xl tracking-tight text-ink">
-              {pais.pais}
-            </h3>
-          </div>
-          <p className="mt-1.5 text-sm font-medium text-gold-dark">{pais.marca}</p>
-          <p className="mt-1 inline-flex items-center gap-1 text-xs text-muted-2">
-            <MapPin className="h-3.5 w-3.5" />
-            {pais.ciudad}
-          </p>
+      <div>
+        <div className="flex items-center gap-2">
+          <span aria-hidden="true" className="text-lg leading-none">
+            {pais.bandera}
+          </span>
+          <span className="text-xs font-semibold uppercase tracking-eyebrow text-gold-dark">
+            {pais.pais}
+          </span>
         </div>
-        <span className="font-display text-sm uppercase tracking-eyebrow text-gold">
-          {pais.codigo}
-        </span>
+        <h3 className="mt-2 font-display text-[clamp(26px,3vw,32px)] leading-tight tracking-tight text-ink">
+          {pais.marca}
+        </h3>
+        <p className="mt-1.5 inline-flex items-center gap-1 text-sm text-muted-2">
+          <MapPin className="h-4 w-4" />
+          {pais.ciudad}
+        </p>
       </div>
 
       <p className="mt-4 text-sm leading-relaxed text-muted">
@@ -122,15 +119,15 @@ export function CountryCard({ pais }: { pais: Pais }) {
         ))}
       </div>
 
-      <div className="mt-5 flex flex-wrap gap-2 border-t border-line pt-5">
+      <div className="mt-6 flex flex-wrap gap-2.5 border-t border-line pt-5">
         {pais.web ? (
           <a
             href={pais.web}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 border border-line px-3.5 py-2 text-xs font-medium text-ink transition-colors hover:border-gold/50 hover:text-gold-dark"
+            className="inline-flex flex-1 items-center justify-center gap-2 bg-navy px-4 py-2.5 text-sm font-medium text-marfil transition-colors hover:bg-navy-800"
           >
-            <Globe className="h-4 w-4 text-gold-dark" />
+            <Globe className="h-4 w-4" />
             {t.card.sitioWeb}
           </a>
         ) : null}
@@ -139,10 +136,10 @@ export function CountryCard({ pais }: { pais: Pais }) {
             href={waLink(pais.whatsapp)}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 border border-line px-3.5 py-2 text-xs font-medium text-ink transition-colors hover:border-gold/50"
+            className="inline-flex flex-1 items-center justify-center gap-2 border border-navy px-4 py-2.5 text-sm font-medium text-ink transition-colors hover:bg-ink/[0.04]"
           >
             <WhatsApp className="h-4 w-4 text-[#25D366]" />
-            {t.card.whatsapp}
+            WhatsApp
           </a>
         ) : null}
       </div>

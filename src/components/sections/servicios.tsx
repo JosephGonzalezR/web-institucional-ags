@@ -13,7 +13,7 @@ export function Servicios() {
       <div className="container-pad">
         <SectionHeader
           eyebrow={t.servicios.eyebrow}
-          numero="04"
+          numero="05"
           titulo={t.servicios.titulo}
           descripcion={t.servicios.descripcion}
         />

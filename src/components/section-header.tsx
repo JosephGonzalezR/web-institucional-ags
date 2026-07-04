@@ -27,17 +27,23 @@ export function SectionHeader({
       )}
     >
       {eyebrow ? (
-        <p className="eyebrow mb-5">
-          {numero ? <span className="text-gold">{numero}</span> : null}
-          {numero ? <span className="mx-2 text-gold/50">/</span> : null}
-          {eyebrow}
+        <p className="eyebrow mb-6 flex items-center gap-3">
+          {numero ? (
+            <span className="font-display text-xl not-italic text-gold">
+              {numero}
+            </span>
+          ) : null}
+          {numero ? (
+            <span aria-hidden="true" className="h-px w-8 bg-gold/50" />
+          ) : null}
+          <span>{eyebrow}</span>
         </p>
       ) : null}
-      <h2 className="display-tight text-[clamp(30px,3.6vw,44px)] leading-[1.08] text-ink">
+      <h2 className="display-tight text-[clamp(34px,4.4vw,54px)] leading-[1.06] text-ink">
         {titulo}
       </h2>
       {descripcion ? (
-        <p className="mt-5 max-w-prose text-[17px] leading-relaxed text-muted">
+        <p className="mt-6 max-w-prose text-lg leading-relaxed text-muted">
           {descripcion}
         </p>
       ) : null}

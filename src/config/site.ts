@@ -11,6 +11,7 @@ export const SITE = {
   descripcion:
     "Academic Global Solutions es una organizacion de servicios academicos con operacion activa en tres paises de Sudamerica. Sitios, canales de contacto y comunidades en redes que respaldan su presencia.",
   correo: "contact@academicglobalsolution.com",
+  correoVentas: "ventas@academicglobalsolution.com",
   dominio: "academicglobalsolution.com",
   url: process.env.NEXT_PUBLIC_SITE_URL ?? "https://academicglobalsolution.com",
   baseline: "2026-06-16",

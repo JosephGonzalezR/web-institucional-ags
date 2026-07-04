@@ -17,7 +17,7 @@ export function Presencia() {
       <div className="container-pad">
         <SectionHeader
           eyebrow={t.presencia.eyebrow}
-          numero="02"
+          numero="03"
           titulo={t.presencia.titulo}
           descripcion={t.presencia.descripcion}
         />

@@ -16,28 +16,34 @@ export function Contacto() {
       <div className="container-pad">
         <SectionHeader
           eyebrow={t.contacto.eyebrow}
-          numero="05"
+          numero="06"
           titulo={t.contacto.titulo}
           descripcion={t.contacto.descripcion}
         />
 
-        <Reveal className="mt-14">
-          {/* Correo institucional como fila editorial. */}
-          <a
-            href={`mailto:${SITE.correo}`}
-            className="group flex flex-col gap-4 border-y border-line py-8 transition-colors hover:bg-ink/[0.015] sm:flex-row sm:items-center sm:justify-between"
-          >
-            <span>
-              <span className="eyebrow block">{t.contacto.correoLabel}</span>
-              <span className="mt-2 block font-display text-[clamp(24px,3vw,38px)] tracking-tight text-ink">
-                {SITE.correo}
+        <Reveal className="mt-14 border-t border-line">
+          {/* Correos institucionales como filas editoriales. */}
+          {[
+            { label: t.contacto.correoLabel, mail: SITE.correo },
+            { label: t.contacto.correoVentasLabel, mail: SITE.correoVentas },
+          ].map((c) => (
+            <a
+              key={c.mail}
+              href={`mailto:${c.mail}`}
+              className="group flex flex-col gap-3 border-b border-line py-7 transition-colors hover:bg-ink/[0.015] sm:flex-row sm:items-center sm:justify-between"
+            >
+              <span>
+                <span className="eyebrow block">{c.label}</span>
+                <span className="mt-2 block font-display text-[clamp(22px,2.8vw,34px)] tracking-tight text-ink">
+                  {c.mail}
+                </span>
               </span>
-            </span>
-            <span className="inline-flex items-center gap-2 text-[15px] font-medium text-gold-dark">
-              {t.contacto.escribir}
-              <ArrowUpRight className="h-5 w-5 transition-transform group-hover:translate-x-1 group-hover:-translate-y-1" />
-            </span>
-          </a>
+              <span className="inline-flex items-center gap-2 text-[15px] font-medium text-gold-dark">
+                {t.contacto.escribir}
+                <ArrowUpRight className="h-5 w-5 transition-transform group-hover:translate-x-1 group-hover:-translate-y-1" />
+              </span>
+            </a>
+          ))}
         </Reveal>
 
         <div className="mt-8 grid gap-px overflow-hidden border border-line bg-line sm:grid-cols-3">

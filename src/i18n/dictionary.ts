@@ -18,6 +18,12 @@ export interface Messages {
     parrafos: string[];
     pilares: { titulo: string; texto: string }[];
   };
+  diferencial: {
+    eyebrow: string;
+    titulo: string;
+    descripcion: string;
+    items: { titulo: string; texto: string }[];
+  };
   presencia: {
     eyebrow: string;
     titulo: string;
@@ -56,6 +62,7 @@ export interface Messages {
     titulo: string;
     descripcion: string;
     correoLabel: string;
+    correoVentasLabel: string;
     escribir: string;
   };
   footer: {
@@ -101,6 +108,19 @@ export const DICT: Record<Lang, Messages> = {
         { titulo: "Operacion local", texto: "Una marca y un equipo propio en cada pais." },
         { titulo: "Base tecnologica comun", texto: "Infraestructura digital y procesos compartidos." },
         { titulo: "Comunidad en redes", texto: "Cuentas activas en Instagram, Facebook y TikTok." },
+      ],
+    },
+    diferencial: {
+      eyebrow: "Nuestro diferencial",
+      titulo: "Por que las tesis y trabajos nos eligen",
+      descripcion:
+        "Lo que nos distingue no es solo estar en tres paises: es como trabajamos.",
+      items: [
+        { titulo: "Calidad ante todo", texto: "Revision por etapas y estandares academicos exigentes en cada entrega." },
+        { titulo: "Fuerte presencia en redes", texto: "Mas de 48.000 seguidores y comunidades activas en Peru, Chile y Argentina." },
+        { titulo: "Mas de 5 anos en el mercado", texto: "Trayectoria y experiencia acompanando a miles de estudiantes." },
+        { titulo: "Profesionales de alto nivel", texto: "Especialistas titulados por area, no generalistas." },
+        { titulo: "Equipos multidisciplinarios", texto: "Cada proyecto lo trabaja el equipo experto en la materia." },
       ],
     },
     presencia: {
@@ -182,6 +202,7 @@ export const DICT: Record<Lang, Messages> = {
       descripcion:
         "Para alianzas, convenios o consultas corporativas, escribenos al correo institucional o contacta a la marca de cada pais.",
       correoLabel: "Correo institucional",
+      correoVentasLabel: "Ventas y cotizaciones",
       escribir: "Escribir",
     },
     footer: {
@@ -240,6 +261,19 @@ export const DICT: Record<Lang, Messages> = {
         { titulo: "Local operation", texto: "An own brand and team in each country." },
         { titulo: "Shared technology base", texto: "Own digital infrastructure and processes." },
         { titulo: "Social communities", texto: "Active accounts on Instagram, Facebook and TikTok." },
+      ],
+    },
+    diferencial: {
+      eyebrow: "Why AGS",
+      titulo: "Why theses and assignments choose us",
+      descripcion:
+        "What sets us apart is not just being in three countries: it is how we work.",
+      items: [
+        { titulo: "Quality first", texto: "Stage-by-stage review and demanding academic standards in every delivery." },
+        { titulo: "Strong social presence", texto: "Over 48,000 followers and active communities in Peru, Chile and Argentina." },
+        { titulo: "5+ years in the market", texto: "A track record supporting thousands of students." },
+        { titulo: "High-level professionals", texto: "Degreed specialists per field, not generalists." },
+        { titulo: "Multidisciplinary teams", texto: "Each project is handled by the team that is expert in the subject." },
       ],
     },
     presencia: {
@@ -321,6 +355,7 @@ export const DICT: Record<Lang, Messages> = {
       descripcion:
         "For partnerships, agreements or corporate inquiries, write to our institutional email or contact each country's brand.",
       correoLabel: "Institutional email",
+      correoVentasLabel: "Sales & quotes",
       escribir: "Write",
     },
     footer: {

@@ -36,12 +36,14 @@ export function Nosotros() {
             {t.nosotros.pilares.map((p, i) => (
               <Reveal key={p.titulo} delay={i * 80}>
                 <div className="grid grid-cols-[auto_1fr] gap-5 border-t border-line py-6 last:border-b">
-                  <span className="font-display text-lg text-gold">
+                  <span className="font-display text-2xl text-gold">
                     {String(i + 1).padStart(2, "0")}
                   </span>
                   <div>
-                    <p className="font-display text-xl text-ink">{p.titulo}</p>
-                    <p className="mt-2 text-[15px] leading-relaxed text-muted">
+                    <p className="font-display text-2xl tracking-tight text-ink">
+                      {p.titulo}
+                    </p>
+                    <p className="mt-2 text-[16px] leading-relaxed text-muted">
                       {p.texto}
                     </p>
                   </div>

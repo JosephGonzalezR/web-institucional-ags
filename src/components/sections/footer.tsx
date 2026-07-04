@@ -3,8 +3,9 @@
 import Image from "next/image";
 import { SITE } from "@/config/site";
 import { PAISES, REDES_ORDEN } from "@/config/paises";
-import { RED_ICONS, Globe, Mail } from "@/components/icons";
+import { RED_ICONS, Globe, Mail, WhatsApp } from "@/components/icons";
 import { REGISTROS_LIST } from "@/config/legal";
+import { waLink } from "@/lib/format";
 import { asset } from "@/lib/asset";
 import { useLang } from "@/i18n/provider";
 
@@ -27,13 +28,18 @@ export function Footer() {
             <p className="mt-6 max-w-sm text-sm leading-relaxed text-[rgba(242,239,226,0.55)]">
               {t.footer.descripcion}
             </p>
-            <a
-              href={`mailto:${SITE.correo}`}
-              className="mt-5 inline-flex items-center gap-2 text-sm text-[rgba(242,239,226,0.8)] transition-colors hover:text-gold-light"
-            >
-              <Mail className="h-4 w-4 text-gold-light" />
-              {SITE.correo}
-            </a>
+            <div className="mt-5 flex flex-col gap-2.5">
+              {[SITE.correo, SITE.correoVentas].map((mail) => (
+                <a
+                  key={mail}
+                  href={`mailto:${mail}`}
+                  className="inline-flex items-center gap-2 text-sm text-[rgba(242,239,226,0.8)] transition-colors hover:text-gold-light"
+                >
+                  <Mail className="h-4 w-4 text-gold-light" />
+                  {mail}
+                </a>
+              ))}
+            </div>
           </div>
 
           <div>
@@ -64,6 +70,17 @@ export function Footer() {
                         className="transition-colors hover:text-gold-light"
                       >
                         <Globe className="h-[18px] w-[18px]" />
+                      </a>
+                    ) : null}
+                    {p.whatsapp ? (
+                      <a
+                        href={waLink(p.whatsapp)}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        aria-label={`WhatsApp ${p.marca}`}
+                        className="transition-colors hover:text-gold-light"
+                      >
+                        <WhatsApp className="h-[18px] w-[18px]" />
                       </a>
                     ) : null}
                     {REDES_ORDEN.map((red) => {

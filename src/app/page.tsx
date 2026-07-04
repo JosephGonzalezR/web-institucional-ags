@@ -1,6 +1,7 @@
 import { Navbar } from "@/components/sections/navbar";
 import { Hero } from "@/components/sections/hero";
 import { Nosotros } from "@/components/sections/nosotros";
+import { Diferencial } from "@/components/sections/diferencial";
 import { Presencia } from "@/components/sections/presencia";
 import { Cifras } from "@/components/sections/cifras";
 import { Servicios } from "@/components/sections/servicios";
@@ -14,6 +15,7 @@ export default function Home() {
       <main>
         <Hero />
         <Nosotros />
+        <Diferencial />
         <Presencia />
         <Cifras />
         <Servicios />
