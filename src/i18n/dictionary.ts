@@ -10,7 +10,7 @@ export interface Messages {
     badge: string;
     claim: string;
     cta: string;
-    stats: { seguidores: string; cuentas: string; paises: string; webs: string };
+    stats: { seguidores: string; cuentas: string; paises: string; webs: string; anios: string };
   };
   nosotros: {
     eyebrow: string;
@@ -94,6 +94,7 @@ export const DICT: Record<Lang, Messages> = {
         cuentas: "Cuentas activas",
         paises: "Paises",
         webs: "Sitios web",
+        anios: "Anos en el mercado",
       },
     },
     nosotros: {
@@ -247,6 +248,7 @@ export const DICT: Record<Lang, Messages> = {
         cuentas: "Active accounts",
         paises: "Countries",
         webs: "Websites",
+        anios: "Years in the market",
       },
     },
     nosotros: {
