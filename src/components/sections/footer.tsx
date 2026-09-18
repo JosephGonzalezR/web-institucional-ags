@@ -4,7 +4,7 @@ import Image from "next/image";
 import { SITE } from "@/config/site";
 import { PAISES, REDES_ORDEN } from "@/config/paises";
 import { RED_ICONS, Globe, Mail, WhatsApp } from "@/components/icons";
-import { REGISTROS_LIST } from "@/config/legal";
+import { EMPRESA, REGISTROS_LIST } from "@/config/legal";
 import { waLink } from "@/lib/format";
 import { asset } from "@/lib/asset";
 import { useLang } from "@/i18n/provider";
@@ -125,6 +125,7 @@ export function Footer() {
                   {r.tipo} {r.numero}
                 </li>
               ))}
+              <li>{EMPRESA.domicilio}</li>
             </ul>
           </div>
         ) : null}
@@ -133,7 +134,16 @@ export function Footer() {
           <p>
             &copy; {anio} {SITE.nombre}. {t.footer.derechos}
           </p>
-          <p>{t.footer.operacion}</p>
+          <p className="flex flex-wrap items-center gap-x-4 gap-y-2">
+            <a
+              href={asset("/terminos/")}
+              className="text-[rgba(242,239,226,0.7)] underline-offset-4 transition-colors hover:text-gold-light hover:underline"
+            >
+              {t.footer.terminos}
+            </a>
+            <span aria-hidden="true" className="text-gold-light">&middot;</span>
+            <span>{t.footer.operacion}</span>
+          </p>
         </div>
       </div>
     </footer>

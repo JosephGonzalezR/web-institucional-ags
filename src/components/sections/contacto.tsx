@@ -7,6 +7,7 @@ import { Globe, WhatsApp, ArrowUpRight } from "@/components/icons";
 import { waLink } from "@/lib/format";
 import { useLang } from "@/i18n/provider";
 import { Reveal } from "@/components/reveal";
+import { ContactForm } from "@/components/contact-form";
 
 export function Contacto() {
   const { t } = useLang();
@@ -44,6 +45,21 @@ export function Contacto() {
               </span>
             </a>
           ))}
+        </Reveal>
+
+        {/* Formulario real: el mensaje llega al correo institucional. */}
+        <Reveal className="mt-14 border border-line bg-paper p-[clamp(22px,3vw,40px)]">
+          <div className="max-w-2xl">
+            <h3 className="font-display text-[clamp(22px,2.4vw,30px)] tracking-tight text-ink">
+              {t.formulario.titulo}
+            </h3>
+            <p className="mt-3 text-[15px] leading-relaxed text-muted">
+              {t.formulario.descripcion}
+            </p>
+          </div>
+          <div className="mt-8">
+            <ContactForm />
+          </div>
         </Reveal>
 
         <div className="mt-8 grid gap-px overflow-hidden border border-line bg-line sm:grid-cols-3">

@@ -9,7 +9,12 @@ import { asset } from "@/lib/asset";
 import { cn } from "@/lib/utils";
 import { useLang } from "@/i18n/provider";
 
-export function Navbar() {
+/**
+ * `hrefBase`: en la portada los enlaces del menu son anclas ("#nosotros").
+ * En una pagina aparte (por ejemplo /terminos/) tienen que volver a la
+ * portada, asi que se le pasa la raiz y quedan como "/#nosotros".
+ */
+export function Navbar({ hrefBase = "" }: { hrefBase?: string }) {
   const [abierto, setAbierto] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const { t } = useLang();
@@ -37,7 +42,7 @@ export function Navbar() {
         aria-label="Principal"
       >
         <a
-          href="#inicio"
+          href={`${hrefBase}#inicio`}
           className="flex items-center gap-3"
           aria-label="Academic Global Solution"
         >
@@ -63,7 +68,7 @@ export function Navbar() {
           {NAV.map((item) => (
             <li key={item.href}>
               <a
-                href={item.href}
+                href={`${hrefBase}${item.href}`}
                 className={cn(
                   "group relative py-1 text-[15px] transition-colors",
                   solid ? "text-muted hover:text-ink" : "text-marfil/85 hover:text-marfil",
@@ -78,7 +83,7 @@ export function Navbar() {
 
         <div className="flex items-center gap-3">
           <a
-            href="#contacto"
+            href={`${hrefBase}#contacto`}
             className={cn(
               "hidden text-[15px] font-medium transition-colors md:inline",
               solid ? "text-ink hover:text-gold-dark" : "text-gold-light hover:text-marfil",
@@ -108,7 +113,7 @@ export function Navbar() {
             {NAV.map((item) => (
               <li key={item.href}>
                 <a
-                  href={item.href}
+                  href={`${hrefBase}${item.href}`}
                   className="block py-3 text-[15px] text-muted hover:text-ink"
                   onClick={() => setAbierto(false)}
                 >

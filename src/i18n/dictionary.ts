@@ -65,12 +65,33 @@ export interface Messages {
     correoVentasLabel: string;
     escribir: string;
   };
+  formulario: {
+    titulo: string;
+    descripcion: string;
+    nombre: string;
+    nombrePlaceholder: string;
+    correo: string;
+    correoPlaceholder: string;
+    telefono: string;
+    telefonoPlaceholder: string;
+    opcional: string;
+    mensaje: string;
+    mensajePlaceholder: string;
+    enviar: string;
+    enviando: string;
+    ok: string;
+    error: string;
+    incompleto: string;
+    nota: string;
+    noLlenar: string;
+  };
   footer: {
     descripcion: string;
     presenciaTitulo: string;
     registro: string;
     derechos: string;
     operacion: string;
+    terminos: string;
   };
   paises: Record<CodigoPais, { descripcion: string }>;
   redes: Record<RedKey, string>;
@@ -206,6 +227,27 @@ export const DICT: Record<Lang, Messages> = {
       correoVentasLabel: "Ventas y cotizaciones",
       escribir: "Escribir",
     },
+    formulario: {
+      titulo: "Escribenos por aqui",
+      descripcion:
+        "Deja tu consulta y te respondemos al correo que nos indiques. Los campos con datos completos nos permiten responder mas rapido.",
+      nombre: "Nombre",
+      nombrePlaceholder: "Nombre y apellido",
+      correo: "Correo",
+      correoPlaceholder: "nombre@correo.com",
+      telefono: "Telefono",
+      telefonoPlaceholder: "Con codigo de pais",
+      opcional: "(opcional)",
+      mensaje: "Mensaje",
+      mensajePlaceholder: "Cuentanos en que podemos ayudarte.",
+      enviar: "Enviar mensaje",
+      enviando: "Enviando...",
+      ok: "Mensaje enviado. Le respondemos al correo indicado.",
+      error: "No se pudo enviar el mensaje. Intentelo otra vez o escribanos al correo institucional.",
+      incompleto: "Complete su nombre, un correo valido y el mensaje.",
+      nota: "Usamos sus datos solo para responder esta consulta. No los compartimos con terceros.",
+      noLlenar: "No llenar este campo",
+    },
     footer: {
       descripcion:
         "Academic Global Solution es una organizacion de servicios academicos con operacion activa en tres paises de Sudamerica. Sitios, canales de contacto y comunidades en redes que respaldan su presencia.",
@@ -213,6 +255,7 @@ export const DICT: Record<Lang, Messages> = {
       registro: "Registro legal",
       derechos: "Todos los derechos reservados.",
       operacion: "Operacion en Peru, Chile y Argentina.",
+      terminos: "Terminos y Condiciones",
     },
     paises: {
       PE: {
@@ -360,6 +403,27 @@ export const DICT: Record<Lang, Messages> = {
       correoVentasLabel: "Sales & quotes",
       escribir: "Write",
     },
+    formulario: {
+      titulo: "Write to us here",
+      descripcion:
+        "Leave your enquiry and we will reply to the email you provide. The more complete the details, the faster we can answer.",
+      nombre: "Name",
+      nombrePlaceholder: "First and last name",
+      correo: "Email",
+      correoPlaceholder: "name@email.com",
+      telefono: "Phone",
+      telefonoPlaceholder: "With country code",
+      opcional: "(optional)",
+      mensaje: "Message",
+      mensajePlaceholder: "Tell us how we can help you.",
+      enviar: "Send message",
+      enviando: "Sending...",
+      ok: "Message sent. We will reply to the email you provided.",
+      error: "The message could not be sent. Please try again or write to our institutional email.",
+      incompleto: "Please enter your name, a valid email and a message.",
+      nota: "We use your data only to answer this enquiry. We do not share it with third parties.",
+      noLlenar: "Do not fill in this field",
+    },
     footer: {
       descripcion:
         "Academic Global Solution is an academic services organization operating in three countries in South America. Sites, contact channels and social communities that back its presence.",
@@ -367,6 +431,7 @@ export const DICT: Record<Lang, Messages> = {
       registro: "Legal registration",
       derechos: "All rights reserved.",
       operacion: "Operating in Peru, Chile and Argentina.",
+      terminos: "Terms and Conditions",
     },
     paises: {
       PE: {

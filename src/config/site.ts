@@ -17,6 +17,15 @@ export const SITE = {
   baseline: "2026-06-16",
 } as const;
 
+/**
+ * Backend del formulario de contacto. El sitio es estatico (GitHub Pages) y no
+ * puede mandar correo: el formulario le pega al Sistema Central, que guarda el
+ * mensaje y lo reenvia al correo institucional.
+ */
+export const CONTACTO_ENDPOINT =
+  process.env.NEXT_PUBLIC_CONTACTO_ENDPOINT ??
+  "https://central.ags-ed.com/api/contacto-web";
+
 export const NAV = [
   { id: "nosotros", href: "#nosotros" },
   { id: "presencia", href: "#presencia" },
