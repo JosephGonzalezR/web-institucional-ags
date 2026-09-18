@@ -41,3 +41,6 @@ next-env.d.ts
 /logo-gemini-v2/
 /logo-concepts/
 /maquetas/
+
+# backups locales (.BAK_fecha_tag) - nunca publicar
+*.BAK_*
