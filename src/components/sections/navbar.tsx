@@ -14,7 +14,15 @@ import { useLang } from "@/i18n/provider";
  * En una pagina aparte (por ejemplo /terminos/) tienen que volver a la
  * portada, asi que se le pasa la raiz y quedan como "/#nosotros".
  */
-export function Navbar({ hrefBase = "" }: { hrefBase?: string }) {
+export function Navbar({
+  hrefBase = "",
+  siempreSolido = false,
+}: {
+  hrefBase?: string;
+  /** Paginas sin hero oscuro (por ejemplo /terminos/): el menu nace opaco,
+   *  si no, el texto claro queda invisible sobre el fondo marfil. */
+  siempreSolido?: boolean;
+}) {
   const [abierto, setAbierto] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const { t } = useLang();
@@ -26,7 +34,7 @@ export function Navbar({ hrefBase = "" }: { hrefBase?: string }) {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  const solid = scrolled || abierto;
+  const solid = siempreSolido || scrolled || abierto;
 
   return (
     <header

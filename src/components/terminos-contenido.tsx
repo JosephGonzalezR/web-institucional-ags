@@ -18,7 +18,7 @@ export function TerminosContenido() {
 
   return (
     <>
-      <Navbar hrefBase={raiz} />
+      <Navbar hrefBase={raiz} siempreSolido />
       <main className="bg-marfil pt-[76px]">
         <section className="border-b border-line py-[clamp(56px,7vw,104px)]">
           <div className="container-pad">

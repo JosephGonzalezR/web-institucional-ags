@@ -228,9 +228,9 @@ export const DICT: Record<Lang, Messages> = {
       escribir: "Escribir",
     },
     formulario: {
-      titulo: "Escribenos por aqui",
+      titulo: "Escribanos por aqui",
       descripcion:
-        "Deja tu consulta y te respondemos al correo que nos indiques. Los campos con datos completos nos permiten responder mas rapido.",
+        "Deje su consulta y le respondemos al correo que nos indique. Mientras mas completos los datos, mas rapido podemos responder.",
       nombre: "Nombre",
       nombrePlaceholder: "Nombre y apellido",
       correo: "Correo",
@@ -239,7 +239,7 @@ export const DICT: Record<Lang, Messages> = {
       telefonoPlaceholder: "Con codigo de pais",
       opcional: "(opcional)",
       mensaje: "Mensaje",
-      mensajePlaceholder: "Cuentanos en que podemos ayudarte.",
+      mensajePlaceholder: "Cuentenos en que podemos ayudarle.",
       enviar: "Enviar mensaje",
       enviando: "Enviando...",
       ok: "Mensaje enviado. Le respondemos al correo indicado.",
