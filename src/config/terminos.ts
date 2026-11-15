@@ -40,17 +40,17 @@ export interface TextosLegales {
 const CANALES_ES = [
   `Correo institucional: ${SITE.correo}`,
   `Correo comercial: ${SITE.correoVentas}`,
-  "Peru, EducaProject: WhatsApp +51 965 148 374",
-  "Chile, Tareapp: WhatsApp +56 9 5307 8288",
-  "Argentina, Trabajos Helper: WhatsApp +54 9 11 3439-9417",
+  "Peru, EducaProject: WhatsApp +51 922 503 398",
+  "Chile, Tareapp: WhatsApp +56 2 3399 0000",
+  "Argentina, Trabajos Helper: WhatsApp +54 9 11 5984-3818",
 ];
 
 const CANALES_EN = [
   `Institutional email: ${SITE.correo}`,
   `Sales email: ${SITE.correoVentas}`,
-  "Peru, EducaProject: WhatsApp +51 965 148 374",
-  "Chile, Tareapp: WhatsApp +56 9 5307 8288",
-  "Argentina, Trabajos Helper: WhatsApp +54 9 11 3439-9417",
+  "Peru, EducaProject: WhatsApp +51 922 503 398",
+  "Chile, Tareapp: WhatsApp +56 2 3399 0000",
+  "Argentina, Trabajos Helper: WhatsApp +54 9 11 5984-3818",
 ];
 
 export const TERMINOS: Record<Lang, TextosLegales> = {

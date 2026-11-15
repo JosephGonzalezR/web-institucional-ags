@@ -50,7 +50,7 @@ export const PAISES: Pais[] = [
     marca: "EducaProject Peru",
     ciudad: "Lima, Peru",
     web: "https://educaproject.ags-ed.com",
-    whatsapp: "+51 965 148 374",
+    whatsapp: "+51 922 503 398",
     linkedin: "https://www.linkedin.com/in/educa-project-6850582a0/",
     redes: {
       instagram: {
@@ -77,7 +77,7 @@ export const PAISES: Pais[] = [
     marca: "Tareapp",
     ciudad: "Santiago, Chile",
     web: "https://tareapp.ags-ed.com",
-    whatsapp: "+56 9 5307 8288",
+    whatsapp: "+56 2 3399 0000",
     redes: {
       instagram: {
         url: "https://www.instagram.com/tareappchile/",
@@ -103,7 +103,7 @@ export const PAISES: Pais[] = [
     marca: "Trabajos Helper",
     ciudad: "Buenos Aires, Argentina",
     web: "https://trabajoshelper.ags-ed.com",
-    whatsapp: "+54 9 11 3439-9417",
+    whatsapp: "+54 9 11 5984-3818",
     redes: {
       instagram: {
         url: "https://www.instagram.com/trabajos_helper/",
