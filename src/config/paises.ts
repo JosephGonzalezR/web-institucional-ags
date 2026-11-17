@@ -85,9 +85,9 @@ export const PAISES: Pais[] = [
         fecha: "2026-06-16",
       },
       facebook: {
-        url: "https://www.facebook.com/profile.php?id=61558060587570",
-        seguidores: 1830,
-        fecha: "2026-06-16",
+        url: "https://www.facebook.com/profile.php?id=61594015747924",
+        seguidores: 5929,
+        fecha: "2026-11-17",
       },
       tiktok: {
         url: "https://www.tiktok.com/@tareapp_",
